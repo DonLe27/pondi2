@@ -1,0 +1,149 @@
+
+div .PondiCircles {
+	position: absolute;
+	border: .4vw solid #D2E6C1;
+	border-radius: 50%;
+	box-sizing: border-box;
+	box-shadow: 0px 4px 4px rgba(209, 209, 209, 0.25);
+
+	width: 50vw;
+	height: 50vw;
+
+	margin: 7.5vw 25vw 25vw 25vw;
+	 
+   	
+}
+
+
+
+div .PondiCircles.two{
+	-webkit-animation: gentle-move-two 10s infinite alternate ease;
+    		animation: gentle-move-two 10s infinite alternate ease;
+    		border: .4vw solid #D2E6C1; 
+   		animation-delay: .5s;
+   		-webkit-animation-delay: .5s;
+   	}
+
+   	div .PondiCircles.three{
+   		-webkit-animation: gentle-move-three 17s infinite alternate ease;
+    		animation: gentle-move-three 17s infinite alternate ease; 
+    		border: .4vw solid #C1D6E5;
+   		animation-delay: 1s;
+   		-webkit-animation-delay: 1s;
+   	}
+
+   	div .PondiCircles.four{
+   		-webkit-animation: gentle-move-four 8s infinite alternate ease;
+    		animation: gentle-move-four 8s infinite alternate ease; 
+    		border: .4vw solid #D2E6C1;
+   		animation-delay: 1.5s;
+   		-webkit-animation-delay: 1.5s;
+   	}
+
+   	div .PondiCircles.five{
+
+   		-webkit-animation: gentle-move 11s infinite alternate ease;
+    		animation: gentle-move 11s infinite alternate ease ease; 
+    		border: .4vw solid #C1D6E5;
+   		animation-delay: 2s;
+   		-webkit-animation-delay: 2s;
+   	}
+
+.Landing h1 {
+	position: absolute;
+	
+	width: 50vw;
+	height: 13vw;
+	margin: 25vw 25vw 25vw 25vw;
+	font-family: Barlow, sans-serif;
+	font-style: normal;
+	font-weight: 100;
+	line-height: normal;
+	font-size: 10vw;
+	text-align: center;
+	color: #598EA4;
+}
+
+
+.LandingPrompt {
+	text-align: center;
+	margin:50vw;
+}
+
+
+/*--------------------------------------*\
+  LANDING-PAGE : normal size, Animations
+\*--------------------------------------*/
+
+/* Normal */
+
+@-webkit-keyframes gentle-move {
+        50% { transform: translate(-15px,10px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(10px,15px); }
+    }
+
+@keyframes gentle-move {
+        50% { transform: translate(-15px,10px)); }
+        /*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate((10px,15px)); }
+    }
+
+/* Two */ 
+
+@-webkit-keyframes gentle-move-two {
+       50% { transform: translate(-30px,-20px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(10px,30px); }
+    }
+
+@keyframes gentle-move-two {
+        50% { transform: translate(-30px,-20px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(10px,30px); }
+    }
+
+/* Three */ 
+
+@-webkit-keyframes gentle-move-three {
+        50% { transform: translate(15px,-15px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(-10px,10px); }
+    }
+
+@keyframes gentle-move-three {
+         50% { transform: translate(15px,-15px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(-10px,10px); }
+    }
+
+/* four */ 
+
+@-webkit-keyframes gentle-move-four {
+        50% { transform: translate(-10px,-3px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(10px,3px); }
+    }
+
+@keyframes gentle-move-four {
+        50% { transform: translate(-10px,-3px); }
+       	/*10% { transform: translateX(7px); }
+        50% { transform: translateX(0px); }
+        90% { transform: translateX(-7px); }*/
+        100% { transform: translate(10px,3px); }
+    }
+
