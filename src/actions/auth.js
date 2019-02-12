@@ -1,4 +1,4 @@
-const BASE_URL = 'http://ff379468.ngrok.io';
+const BASE_URL = 'https://2e4b0464.ngrok.io';
 //127.0.0.1:2000
 
 export const login = (username, password) => {
@@ -119,27 +119,29 @@ export const logout = () => {
       headers["Authorization"] = `Token ${token}`;
     }
 
-    return fetch(BASE_URL + "/api/auth/logout/", {headers, body: "", method: "POST"})
-      .then(res => {
-        if (res.status === 204) {
-          return {status: res.status, data: {}};
-        } else if (res.status < 500) {
-          return res.json().then(data => {
-            return {status: res.status, data};
-          })
-        } else {
-          console.log("Server Error!");
-          throw res;
-        }
-      })
-      .then(res => {
-        if (res.status === 204) {
-          dispatch({type: 'LOGOUT_SUCCESSFUL'});
-          return res.data;
-        } else if (res.status === 403 || res.status === 401) {
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
-          throw res.data;
-        }
-      })
+    dispatch({type: 'LOGOUT_SUCCESSFUL'});
+
+    // return fetch(BASE_URL + "/api/auth/logout/", {headers, body: "", method: "POST"})
+    //   .then(res => {
+    //     if (res.status === 204) {
+    //       return {status: res.status, data: {}};
+    //     } else if (res.status < 500) {
+    //       return res.json().then(data => {
+    //         return {status: res.status, data};
+    //       })
+    //     } else {
+    //       console.log("Server Error!");
+    //       throw res;
+    //     }
+    //   })
+    //   .then(res => {
+    //     if (res.status === 204) {
+    //       dispatch({type: 'LOGOUT_SUCCESSFUL'});
+    //       return res.data;
+    //     } else if (res.status === 403 || res.status === 401) {
+    //       dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+    //       throw res.data;
+    //     }
+    //   })
   }
 }

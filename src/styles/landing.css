@@ -1,3 +1,10 @@
+/*--------------------------------------*\
+	    LANDING-PAGE : normal size;
+\*--------------------------------------*/
+
+body {
+	;
+}
 
 div .PondiCircles {
 	position: absolute;
@@ -86,11 +93,11 @@ div .PondiCircles.two{
     }
 
 @keyframes gentle-move {
-        50% { transform: translate(-15px,10px)); }
+        50% { transform: translate(-15px,10px) }
         /*10% { transform: translateX(7px); }
         50% { transform: translateX(0px); }
         90% { transform: translateX(-7px); }*/
-        100% { transform: translate((10px,15px)); }
+        100% { transform: translate(10px,15px) }
     }
 
 /* Two */ 

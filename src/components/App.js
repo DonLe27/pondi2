@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import { auth } from "../actions";
 import pondiApp from "../reducers";
 
+import Landing from "./Landing";
 import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
@@ -42,7 +43,8 @@ class RootContainerComponent extends React.Component{
     return (
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/home" component={Dashboard} />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route component={NotFound} />

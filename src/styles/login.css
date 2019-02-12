@@ -14,3 +14,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.login-button {
+  font-family: Barlow, sans-serif;
+	font-style: normal;
+  font-weight: 100;
+  margin: 10px;
+  font-size: 30px;
+  text-align: right;
+}
+
+.login-link {
+  text-decoration: none;
+  color: #98AABB;
+}

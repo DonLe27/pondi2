@@ -1,14 +1,12 @@
-import React, {Component} from "react";
-import { Redirect } from 'react-router-dom';
+import React from "react";
 import {connect} from "react-redux";
 import {auth} from "../actions";
-// import {Link} from "react-router-dom";
 
 class Logout extends React.Component {
   render() {
     return (
       <div>
-          <a onClick={this.props.logout}>logout</a>
+        <button onClick={this.props.logout}>logout</button>
       </div>
     )
   }
@@ -17,7 +15,8 @@ class Logout extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.user,
+    isAuthenticated: state.auth.isAuthenticated,
+    token: state.auth.token
   }
 }
 

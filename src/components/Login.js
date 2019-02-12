@@ -18,7 +18,7 @@ class Login extends Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to="/" />
+            return <Redirect to="/home" />
         }
         return (
         <form onSubmit={this.onSubmit}>
@@ -48,6 +48,7 @@ class Login extends Component {
         )
     }
 }
+
 const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {

@@ -9,7 +9,11 @@ class Login extends Component {
 
   state = {
     username: "",
+    firstname: "",
+    lastname: "",
     password: "",
+    animal: "", 
+    color: ""
   }
 
   onSubmit = e => {
@@ -19,7 +23,7 @@ class Login extends Component {
 
   render() {
     if (this.props.isAuthenticated) {
-      return <Redirect to="/" />
+      return <Redirect to="/home" />
     }
     return (
       <form onSubmit={this.onSubmit}>
@@ -39,10 +43,34 @@ class Login extends Component {
               onChange={e => this.setState({username: e.target.value})} />
           </p>
           <p>
+            <label htmlFor="firstname">First name</label>
+            <input
+              type="text" id="firstname"
+              onChange={e => this.setState({firstname: e.target.value})} />
+          </p>
+          <p>
+            <label htmlFor="lastname">Last name</label>
+            <input
+              type="text" id="lastname"
+              onChange={e => this.setState({lastname: e.target.value})} />
+          </p>
+          <p>
             <label htmlFor="password">Password</label>
             <input
-              type="password" id="password"
+              type="text" id="password"
               onChange={e => this.setState({password: e.target.value})} />
+          </p>
+          <p>
+            <label htmlFor="animal">Animal</label>
+            <input
+              type="text" id="animal"
+              onChange={e => this.setState({animal: e.target.value})} />
+          </p>
+          <p>
+            <label htmlFor="animal">Color</label>
+            <input
+              type="text" id="color"
+              onChange={e => this.setState({color: e.target.value})} />
           </p>
           <p>
             <button type="submit">Register</button>

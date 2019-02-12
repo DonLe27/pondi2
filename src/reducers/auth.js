@@ -1,5 +1,3 @@
-//import jwtDecode from 'jwt-decode'
-//import * as auth from '../actions/auth'
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
