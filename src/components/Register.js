@@ -1,87 +1,155 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
-
+import LoginButton from './LoginButton';
+import { Button, FormGroup, FormControl, ControlLabel, Alert } from "react-bootstrap";
 import {Link, Redirect} from "react-router-dom";
-
+import '../styles/register.css'
+import {connect} from "react-redux";
 import {auth} from "../actions";
 
-class Login extends Component {
+// const Register = () => (
+//   <div>
+//     <LoginButton />
+//     <h1 className="Register-H1">Registration</h1>
+//     <div className="Register" >
+//         <RegisterForm className="RegisterForm" />
+//     </div>
+//   </div>
+// )
 
-  state = {
-    username: "",
-    firstname: "",
-    lastname: "",
-    password: "",
-    animal: "", 
-    color: ""
+// const LoginLink = () => (
+//     <div>
+//         <div>Already have an account?</div>
+//         <Link to='/login'>Log in</Link>
+//     </div>
+// )
+
+class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      show_error: false,
+      error_message: ""
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.register(this.state.username, this.state.password);
+  validateForm() {
+    return this.state.firstName.length > 0
+    && this.state.lastName.length > 0  
+    && this.state.username.length > 0
+    && this.state.email.length > 0
+    && this.state.password.length > 0;
+    //&& this.state.repeated_password.length > 0;
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+      // if (this.state.password !== this.state.repeated_password) {
+      //     this.state.show_error = true;
+      //     this.state.error_message = "Passwords do not match.";
+      // }
+      event.preventDefault();
+      this.props.register(
+        this.state.username, 
+        this.state.password, 
+        this.state.firstName,
+        this.state.lastName,
+        this.state.email,
+      );
+  }
+
+  showAlert(event) {
+      return (
+          <Alert bsStyle="danger">
+            <p>{this.props.error_message}</p>
+          </Alert>
+      );
   }
 
   render() {
+    document.body.style = 'background: #D6E4EE;';
     if (this.props.isAuthenticated) {
       return <Redirect to="/home" />
     }
-    return (
-      <form onSubmit={this.onSubmit}>
-        <fieldset>
-          <legend>Register</legend>
-          {this.props.errors.length > 0 && (
-            <ul>
-              {this.props.errors.map(error => (
-                <li key={error.field}>{error.message}</li>
-              ))}
-            </ul>
-          )}
-          <p>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text" id="username"
-              onChange={e => this.setState({username: e.target.value})} />
-          </p>
-          <p>
-            <label htmlFor="firstname">First name</label>
-            <input
-              type="text" id="firstname"
-              onChange={e => this.setState({firstname: e.target.value})} />
-          </p>
-          <p>
-            <label htmlFor="lastname">Last name</label>
-            <input
-              type="text" id="lastname"
-              onChange={e => this.setState({lastname: e.target.value})} />
-          </p>
-          <p>
-            <label htmlFor="password">Password</label>
-            <input
-              type="text" id="password"
-              onChange={e => this.setState({password: e.target.value})} />
-          </p>
-          <p>
-            <label htmlFor="animal">Animal</label>
-            <input
-              type="text" id="animal"
-              onChange={e => this.setState({animal: e.target.value})} />
-          </p>
-          <p>
-            <label htmlFor="animal">Color</label>
-            <input
-              type="text" id="color"
-              onChange={e => this.setState({color: e.target.value})} />
-          </p>
-          <p>
-            <button type="submit">Register</button>
-          </p>
+  return (
+    <div>
+      <LoginButton />
+      <h1 className="Register-H1">Registration</h1>
+    <div className="Register" >    
+      <form onSubmit={this.handleSubmit} className="RegisterForm">
+        <FormGroup controlId="firstName" bsSize="large">
+            <FormControl className="register-fname"
+            autoFocus
+            type="text"
+            placeholder="first name"
+            value={this.state.firstName}
+            onChange={this.handleChange}
+            />
+        </FormGroup>
+        <FormGroup controlId="lastName" bsSize="large">
+            <FormControl className="register-lname"
+            autoFocus
+            type="text"
+            placeholder="last name"
+            value={this.state.lastName}
+            onChange={this.handleChange}
+            />
+        </FormGroup>
 
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
-        </fieldset>
-      </form>
-    )
+        <FormGroup controlId="username" bsSize="large">
+            <FormControl className="register-wide"
+            autoFocus
+            type="text"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+            />
+        </FormGroup>
+
+        <FormGroup controlId="email" bsSize="large">
+            <FormControl className="register-wide"
+            placeholder="email"
+            autoFocus
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            />
+        </FormGroup>
+
+        <FormGroup controlId="password" bsSize="large">
+            <FormControl className="register-wide"
+            placeholder="password"
+            autoFocus
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            />
+        </FormGroup>
+
+        <Button className="register-button"
+            block
+            bsSize="large"
+            disabled={!this.validateForm()}
+            type="submit"
+        >next
+        </Button>
+    </form>
+    </div>
+    </div>
+    );
   }
 }
 
@@ -104,4 +172,4 @@ const mapDispatchToProps = dispatch => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

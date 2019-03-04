@@ -1,28 +1,31 @@
-const BASE_URL = 'https://2e4b0464.ngrok.io';
-//127.0.0.1:2000
+const BASE_URL = 'http://localhost:8000';
 
 export const login = (username, password) => {
   return (dispatch, getState) => {
-    let headers = {"Content-Type": "application/json", 'Access-Control-Allow-Origin': '*'};
+    let headers = {"Content-Type": "application/json", 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Credentials" : true, 'Accept': 'application/json' };
     let body = JSON.stringify({username, password});
-
-    console.log('USERNAME:', username);
-    console.log('PASS:', password);
+    // let headers = {
+    //   "Content-Type": "application/json",
+    //   // 'Accept': 'application/json',
+    //   'Access-Control-Allow-Origin': '*'
+    // };
     console.log('BODY:', body);
 
-    return fetch(BASE_URL + "/api/auth/login/", {headers, body, method: "POST"})
-      .then(res => {
+    fetch(BASE_URL + "/api/auth/login/", {headers, body, method: "POST"})
+      .then(function(res) {
         if (res.status < 500) {
-          //console.log('there was an error:', res);
           return res.json().then(data => {
-            return {status: res.status, data};
+            return {
+              status: res.status,
+              data
+            }
           })
         } else {
           console.log("Server Error!");
           throw res;
         }
       })
-      .then(res => {
+      .then(function(res) {
         if (res.status === 200) {
           console.log("LOGIN SUCCESSFUL");
           dispatch({type: 'LOGIN_SUCCESSFUL', data: res.data });
@@ -48,12 +51,15 @@ export const loadUser = () => {
 
     let headers = {
       "Content-Type": "application/json",
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     };
 
     if (token) {
       headers["Authorization"] = `Token ${token}`;
     }
-    return fetch(BASE_URL, {headers, })
+
+    return fetch(BASE_URL + '/api/auth/profile/', {headers, method: "GET"})
       .then(res => {
         if (res.status < 500) {
           return res.json().then(data => {
@@ -79,8 +85,12 @@ export const loadUser = () => {
 
 export const register = (username, password) => {
   return (dispatch, getState) => {
-    let headers = {"Content-Type": "application/json"};
     let body = JSON.stringify({username, password});
+    let headers = {
+      "Content-Type": "application/json",
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    };
 
     return fetch(BASE_URL + "/api/auth/register/", {headers, body, method: "POST"})
       .then(res => {
@@ -95,6 +105,7 @@ export const register = (username, password) => {
       })
       .then(res => {
         if (res.status === 200) {
+          console.log('RES DATA FROM REGISTRATION:', res.data);
           dispatch({type: 'REGISTRATION_SUCCESSFUL', data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
@@ -120,28 +131,5 @@ export const logout = () => {
     }
 
     dispatch({type: 'LOGOUT_SUCCESSFUL'});
-
-    // return fetch(BASE_URL + "/api/auth/logout/", {headers, body: "", method: "POST"})
-    //   .then(res => {
-    //     if (res.status === 204) {
-    //       return {status: res.status, data: {}};
-    //     } else if (res.status < 500) {
-    //       return res.json().then(data => {
-    //         return {status: res.status, data};
-    //       })
-    //     } else {
-    //       console.log("Server Error!");
-    //       throw res;
-    //     }
-    //   })
-    //   .then(res => {
-    //     if (res.status === 204) {
-    //       dispatch({type: 'LOGOUT_SUCCESSFUL'});
-    //       return res.data;
-    //     } else if (res.status === 403 || res.status === 401) {
-    //       dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
-    //       throw res.data;
-    //     }
-    //   })
   }
 }
