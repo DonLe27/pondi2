@@ -1,0 +1,39 @@
+/*--------------------------------------*\
+	    Categories : medium size;
+\*--------------------------------------*/
+
+.category {
+	width: 23%;
+	float: left;
+	height: 5vw;
+
+	text-align: center;
+
+	margin: 0 2% 3vw 0%;
+	padding-top: 1vw;
+
+	border-radius: .7vw;
+	border: 2px solid #D7E2EA;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    font-family: Barlow;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 2vw;
+
+	cursor: pointer;
+
+    color: #98AABB;
+}
+
+.category:hover {
+	background-color: rgba(200,200,200,.5);
+}
+
+.category-holder {
+	margin: 5vw;
+	margin-bottom: 15vw;
+}

@@ -1,0 +1,42 @@
+/*--------------------------------------*\
+              TRANSITIONS
+\*--------------------------------------*/
+
+
+.example-appear {
+	opacity: .01;
+	
+}
+
+.example-appear.example-appear-active {
+
+	opacity: 1;
+	transition: opacity .5s ease-in;
+}
+
+.example-enter {
+
+	opacity: .01;
+}
+
+.example-enter.example-enter-active {
+
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+/*
+  -webkit-animation: fromright 2s ease;
+    		animation: fromright 2s ease; */
+}
+
+.example-leave {
+
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+
+	opacity: .01;
+transition: opacity 500ms ease-out;
+ /* -webkit-animation: loleft 2s ease;
+    		animation: toleft 2s ease; */
+}

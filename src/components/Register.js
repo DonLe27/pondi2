@@ -88,66 +88,66 @@ class Register extends Component {
     <div>
       <LoginButton />
       <h1 className="Register-H1">Registration</h1>
-    <div className="Register" >    
-      <form onSubmit={this.handleSubmit} className="RegisterForm">
-        <FormGroup controlId="firstName" bsSize="large">
-            <FormControl className="register-fname"
-            autoFocus
-            type="text"
-            placeholder="first name"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-            />
-        </FormGroup>
-        <FormGroup controlId="lastName" bsSize="large">
-            <FormControl className="register-lname"
-            autoFocus
-            type="text"
-            placeholder="last name"
-            value={this.state.lastName}
-            onChange={this.handleChange}
-            />
-        </FormGroup>
+      <div className="Register" >    
+        <form onSubmit={this.handleSubmit} className="RegisterForm">
+          <FormGroup controlId="firstName" bsSize="large">
+              <FormControl className="register-fname"
+              autoFocus
+              type="text"
+              placeholder="first name"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+              />
+          </FormGroup>
+          <FormGroup controlId="lastName" bsSize="large">
+              <FormControl className="register-lname"
+              autoFocus
+              type="text"
+              placeholder="last name"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+              />
+          </FormGroup>
 
-        <FormGroup controlId="username" bsSize="large">
-            <FormControl className="register-wide"
-            autoFocus
-            type="text"
-            placeholder="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            />
-        </FormGroup>
+          <FormGroup controlId="username" bsSize="large">
+              <FormControl className="register-wide"
+              autoFocus
+              type="text"
+              placeholder="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              />
+          </FormGroup>
 
-        <FormGroup controlId="email" bsSize="large">
-            <FormControl className="register-wide"
-            placeholder="email"
-            autoFocus
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            />
-        </FormGroup>
+          <FormGroup controlId="email" bsSize="large">
+              <FormControl className="register-wide"
+              placeholder="email"
+              autoFocus
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              />
+          </FormGroup>
 
-        <FormGroup controlId="password" bsSize="large">
-            <FormControl className="register-wide"
-            placeholder="password"
-            autoFocus
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            />
-        </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+              <FormControl className="register-wide"
+              placeholder="password"
+              autoFocus
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              />
+          </FormGroup>
 
-        <Button className="register-button"
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-        >next
-        </Button>
-    </form>
-    </div>
+          <Button className="register-button"
+              block
+              bsSize="large"
+              disabled={!this.validateForm()}
+              type="submit"
+          >next
+          </Button>
+      </form>
+      </div>
     </div>
     );
   }

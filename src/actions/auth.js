@@ -29,6 +29,7 @@ export const login = (username, password) => {
         if (res.status === 200) {
           console.log("LOGIN SUCCESSFUL");
           dispatch({type: 'LOGIN_SUCCESSFUL', data: res.data });
+          //dispatch({type: 'USER_LOADED', user: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
           console.log("AUTH ERROR");
@@ -83,9 +84,9 @@ export const loadUser = () => {
 }
 
 
-export const register = (username, password) => {
+export const register = (username, password, firstName, lastName, email) => {
   return (dispatch, getState) => {
-    let body = JSON.stringify({username, password});
+    let body = JSON.stringify({username, password, firstName, lastName, email});
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
@@ -105,7 +106,6 @@ export const register = (username, password) => {
       })
       .then(res => {
         if (res.status === 200) {
-          console.log('RES DATA FROM REGISTRATION:', res.data);
           dispatch({type: 'REGISTRATION_SUCCESSFUL', data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {

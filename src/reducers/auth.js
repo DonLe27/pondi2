@@ -8,7 +8,6 @@ const initialState = {
 
 
 export default function auth(state=initialState, action) {
-
   switch (action.type) {
     case 'USER_LOADING':
       return {...state, isLoading: true};
@@ -19,6 +18,8 @@ export default function auth(state=initialState, action) {
     case 'LOGIN_SUCCESSFUL':
     case 'REGISTRATION_SUCCESSFUL':
     localStorage.setItem("token", action.data.token);
+    console.log('ACTION DATA:', action.data);
+    console.log('STATE:', state);
     return {...state, ...action.data, isAuthenticated: true, isLoading: false, errors: null};
 
     case 'AUTHENTICATION_ERROR':

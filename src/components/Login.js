@@ -2,49 +2,82 @@ import React, {Component} from "react";
 import { Redirect } from 'react-router-dom';
 import {connect} from "react-redux";
 import {auth} from "../actions";
-
 import {Link} from "react-router-dom";
+import { Button, FormGroup, FormControl, ControlLabel, Alert } from "react-bootstrap"
+import "../styles/login.css";
+
+const RegisterButton = () => (
+    <div className="RegisterButton">
+        <div>New to Pondi?</div>
+        <Link to='/register' >Sign up now!</Link>
+    </div>
+)
 
 class Login extends Component {
     state = {
+        toProfile: false,
         username: "",
         password: "",
     }
-
-    onSubmit = e => {
-        e.preventDefault();
-        this.props.login(this.state.username, this.state.password);
+    nameHandler = () => {
+		this.setState(() => ({
+			toProfile: true
+		}));
+	}
+	passHandler = (uPass) => {
+			this.setState(() => ({
+			toProfile: true
+        }));	
     }
+	handleChange = event => {
+		this.setState({
+			[event.target.id]: event.target.value
+		});
+	}
+	handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.login(this.state.username, this.state.password);
+	}
 
     render() {
+        document.body.style = 'background: #D6E4EE;';
         if (this.props.isAuthenticated) {
             return <Redirect to="/home" />
         }
         return (
-        <form onSubmit={this.onSubmit}>
-            <fieldset>
-            <legend>Login</legend>
-            <p>
-                <label htmlFor="username">Username</label>
-                <input
-                type="text" id="username"
-                onChange={e => this.setState({username: e.target.value})} />
-            </p>
-            <p>
-                <label htmlFor="password">Password</label>
-                <input
-                type="password" id="password"
-                onChange={e => this.setState({password: e.target.value})} />
-            </p>
-            <p>
-                <button type="submit">Login</button>
-            </p>
-
-            <p>
-                Don't have an account? <Link to="/register">Register</Link>
-            </p>
-            </fieldset>
-        </form>
+            <div>
+            <h1 className="Login-H1">Login</h1>
+            <div className="Login">
+            <form onSubmit={this.handleSubmit}>
+                <FormGroup controlId="username" bsSize="large">
+                	<FormControl className="login-wide"
+					placeholder="username" 
+					autoFocus 
+					type="string" 
+					value={this.state.email} 
+					onChange={this.handleChange} 
+					/>
+				</FormGroup>
+				<FormGroup controlId="password" bsSize="large" >
+                	<FormControl className="login-wide"
+                	placeholder="password"
+                	autoFocus
+                	type="password"
+                	value={this.state.password}
+                	onChange={this.handleChange}
+                	/>
+            	</FormGroup>
+                <Button className="login-button"
+                    block
+                    bsSize="large"
+                    // disabled={!this.validateForm()}
+                    type="submit"
+                >Log In
+                </Button>
+            </form>
+            <RegisterButton/>
+            </div>
+            </div>
         )
     }
 }

@@ -12,6 +12,7 @@ import pondiApp from "../reducers";
 import Landing from "./Landing";
 import Login from "./Login";
 import Register from "./Register";
+import StreamHolder from "./StreamHolder";
 import Dashboard from "./Dashboard";
 import NotFound from "./NotFound";
 
@@ -23,6 +24,7 @@ const store = createStore(pondiApp, composedEnhancers);
 /* eslint-enable */
 
 class RootContainerComponent extends React.Component{
+
   componentDidMount() {
     this.props.loadUser();
   }
@@ -44,7 +46,7 @@ class RootContainerComponent extends React.Component{
     return (
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/home" component={Dashboard} />
+          <PrivateRoute exact path="/home" component={StreamHolder} />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
