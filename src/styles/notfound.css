@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
+body > #root > div {
+    height: 100vh;
+    width: 100%;
+  }
+
+.wave {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.oops {
+    position: absolute;
+    bottom: 20vw;
+    left: 15%;
+
+    font-family: Barlow, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 3vw;
+
+    color: #767676;
+}
+
+.uncharted {
+    position: absolute;
+    bottom: 12.7vw;
+    left: 15%;
+
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: normal;
+    font-size: 5.8vw;
+
+    color: #598EA4;
+}
+
+.return {
+    position: absolute;
+    bottom: 8vw;
+    left: 50%;
+
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 3vw;
+
+    color: #767676;
+}
+
+.logo{
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    height: 180px;
+
+}

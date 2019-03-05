@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { CSSTransitionGroup } from 'react-transition-group'; // ES6
-import { Button } from "react-bootstrap"
+//import { Link } from 'react-router-dom';
+//import { CSSTransitionGroup } from 'react-transition-group'; // ES6
+//import { Button } from "react-bootstrap"
 import '../styles/transitions.css';
 
 class ProfPic extends React.Component

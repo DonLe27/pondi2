@@ -5,6 +5,7 @@
   "dependencies": {
     "Validator": "^1.0.5",
     "axios": "^0.18.0",
+    "connect-with-transition-group": "^0.2.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
