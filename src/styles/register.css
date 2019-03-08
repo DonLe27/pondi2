@@ -1,5 +1,5 @@
 /*--------------------------------------*\
-	       Register : medium size;
+           Register : medium size;
 \*--------------------------------------*/
 
 /*body {
@@ -7,110 +7,164 @@ background: linear-gradient(302.47deg, #D6E4EE -0.66%, #FFFFFF 134.48%);
 }
 */
 
-#body {
-	background: #D6E4EE;
-}
+
 
 .Register {
-	position: absolute;
-	width: 50%;
-	left: 20%;
-	top: 27vh;
-	border: 0px solid black;
-	padding: 5vw;
+    position: absolute;
+    width: 50vh;
+    margin: 0;
+    left: calc(50vw - 30vh);
+    top: 17vh;
+    border: 0px solid black;
+    padding: 5vh;
 
-	font-family: Barlow, sans-serif;
-	font-style: normal;
-	font-weight: 100;
-	line-height: normal;
-	font-size: 2vw;
-	background-color: white;
+    font-family: Barlow, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    font-size: 1.8vh;
+    background-color: white;
 
-	border-radius: 3vw;
-	background: #FDFDFD;
-box-shadow: 0px 15px 20px rgba(70, 122, 151, 0.15);
+    border-radius: 3vh;
+    background: #FDFDFD;
+    box-shadow: 0px 15px 20px rgba(70, 122, 151, 0.15);
 
 
 }
 
 
- .Register-H1 {
- 	position: absolute;
- 	top: 17vh;
- 	width: 30vw;
- 	left: 35vw;
-	text-align: center;
-	font-family: Barlow, sans-serif;
-	padding-top: 5vh;
-	padding-bottom: 22vh;
-	font-size: 3vw;
-	font-weight: 500;
-	margin: 0vw 0 3vw 0;
-		margin-bottom: 1vw;
+.Register-H1 {
+    position: absolute;
+    top: 6vh;
+    width: 30vh;
+    left: calc(50vw - 15vh);
+    text-align: center;
+    font-family: Barlow, sans-serif;
+    padding-top: 5vh;
+    padding-bottom: 22vh;
+    font-size: 3vh;
+    font-weight: 500;
+    margin: 0vw 0 3vh 0;
+    margin-bottom: 1vh;
 
-	border-radius: 50%;
-	border: 2px solid #C1D6E5;
+    border-radius: 50%;
+    border: 2px solid #C1D6E5;
 }
 
 .register-fname {
-	font-family: Barlow, sans-serif;
-	font-size: 1.8vw;
-	float: left;
-	width: calc(50% - 5vw);
-	margin-right: 6vw;
-	border: none;
-	border-bottom: 1px solid #AAAAAA;
-	padding: 1vw 1vw .5vw .3vw;
-		margin-bottom: 1vw;
-			background:rgba(0,0,0,0.0);
+    font-family: Barlow, sans-serif;
+    font-size: 2vh;
+    float: left;
+    width: calc(50% - 5vh);
+    margin-right: 6vh;
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+    padding: 1vh 1vh .5vh .3vh;
+    margin-bottom: 1vh;
+    background: rgba(0, 0, 0, 0.0);
 
 
 }
 
-
 .register-lname {
-	font-family: Barlow, sans-serif;
-	font-size: 1.8vw;
-	width: calc(50% - 5vw);
-	
-	border: none;
-	border-bottom: 1px solid #AAAAAA;
-	padding: 1vw 1vw .5vw .3vw;
-		background:rgba(0,0,0,0.0);
+
+    font-family: Barlow, sans-serif;
+    font-size: 2vh;
+    float: right;
+    width: calc(50% - 5vh);
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+    padding: 1vh 1vh .5vh .3vh;
+    margin-bottom: 1vh;
+    background: rgba(0, 0, 0, 0.0);
 
 }
 
 .register-wide {
-	font-family: Barlow, sans-serif;
-	font-size: 1.8vw;
-	width: calc(100% - 3vw);
-	margin-top: 1vw;
-	margin-bottom: 1vw;
-	
-	border: none;
-	border-bottom: 1px solid #AAAAAA;
-	padding: 1vw 1vw .5vw .3vw;
-		background:rgba(0,0,0,0.0);
+    font-family: Barlow, sans-serif;
+    font-size: 2vh;
+    width: calc(100% - 3vh);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+    padding: 1vh 1vh .5vh .3vh;
+    background: rgba(0, 0, 0, 0.0);
 
 }
 
 .register-button {
-	font-family: Barlow, sans-serif;
-	font-size: 3.0vw;
-	padding-bottom: .5vw;
-	width: 15vw;
-	position: absolute;
-	top: 28.5vh;
-	left: 22.5vw;
-	height: 6vw;
-	background: #E6EFF5;
-/* Elevation 2 ~ iOS */
-box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
-border-radius: 2.5vw;
-border: none;
-cursor: pointer;
+    font-family: Barlow, sans-serif;
+    font-size: 3.0vh;
+    padding-bottom: .5vw;
+    width: 15vh;
+    position: relative;
+    
+    left: calc(50% - 7.5vh);
+    height: 6vh;
+    background: #E6EFF5;
+    /* Elevation 2 ~ iOS */
+    box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+    border-radius: 2.5vw;
+    border: none;
+    cursor: pointer;
 }
 
 .register-button:hover {
-	background: #E0E9F0;
+    background: #E0E9F0;
+}
+
+.register-wide-label {
+    width: calc(100% - 3vh);
+    text-align: center;
+    font-size: 2vh;
+    margin: 1vh;
+    margin-bottom: 2vh;
+}
+
+.Register hr {
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+    position: relative;
+    width: calc(10vh);
+    left: 0vh;
+
+}
+
+.avatar-button {
+    width: calc(25% - 1.2vh);
+    height: calc(10vh);
+    margin-right: 1vh;
+    margin-left: 0;
+    margin-bottom: 1vh;
+    margin-top: 0;
+    border-radius: .5vh;
+
+    background-color: rgba(0,0,0,.1);
+    border: none;
+}
+
+.avatar-button img {
+    width: calc(10vh);
+    height: calc(10vh);
+}
+
+.avatar-button:hover{
+    background-color: rgba(0,0,0,.4);
+}
+
+.color-button {
+    width: calc(10vh);
+    height: calc(10vh);
+    margin-right: 2.5vh;
+    margin-left: 0;
+    margin-bottom: 1vh;
+    margin-top: 0;
+    border-radius: 50%;
+    border: none;
+}
+
+.color-button:hover{
+    
 }
