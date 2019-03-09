@@ -19,18 +19,18 @@ class StreamHolder extends React.Component {
             // parse through data, get username, etc
             this.userData = {
                 "username": "this is a username",
-                "avatar": "/hedgehog-clipart-black-and-white-1.png",
+                "avatar": "stingray",
                 "prompts": [{
                         "title": "This is the first title, from archive",
                         "content": "this is some content. This is some more content. This is more content",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                     {
                         "title": "This is the second title, from archive",
                         "content": "this is some more content. Lorem ipsum something dolor blah",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                 ]
             };
@@ -39,25 +39,25 @@ class StreamHolder extends React.Component {
                         "title": "This is the first title for stream",
                         "content": "this is some content. This is some more contnet. This is more content",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                     {
                         "title": "This is the 2nd title for stream",
                         "content": "this is some content. This is some more contnet. This is more content",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                     {
                         "title": "This is the 3rd title for stream",
                         "content": "this is some content. This is some more contnet. This is more content",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                     {
                         "title": "This is the 4th title for stream",
                         "content": "this is some more content. Lorem ipsum something dolor blah",
                         "date": "Jan 1, 1111",
-                        "avatar": "/hedgehog-clipart-black-and-white-1.png"
+                        "avatar": "stingray"
                     },
                 ]
             };

@@ -23,20 +23,20 @@ import { auth } from "../actions";
 //     </div>
 // )
 
-class Register extends Component {
+class RegisterAvatarColor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            username: "",
-            email: "",
-            password: "",
-            show_error: false,
-            error_message: "",
+            firstName: this.props.data["firstName"],
+            lastName: this.props.data["lastName"],
+            username: this.props.data["username"],
+            password: this.props.data["password"],
+            email: this.props.data["email"],
             avatar: "",
-            color: ""
-        };
+            selected_avi: 0,
+            color: "",
+            selected_color: "#AAAAAA"
+        }
 
         // Avatars:
         this.avatars = [
@@ -50,18 +50,104 @@ class Register extends Component {
             "hedgehog"
         ]
 
-        this.avatarButtons = [];
+        this.colors = [
+            "#7F91A8",
+            "#BFD9A9",
+            "#9895C1",
+            "#A0A0A0",
+            "#7AA1A4",
+            "#ECA586",
+            "#EBD08C",
+            "#DC8282"
+        ]
+    }
 
 
 
-        // Color pallette:
+    validate() {
+        return this.state.firstName.length > 0 &&
+            this.state.lastName.length > 0 &&
+            this.state.username.length > 0 &&
+            this.state.email.length > 0 &&
+            this.state.password.length > 0 &&
+            this.state.avatar != "" &&
+            this.state.color != "";
+        //&& this.state.repeated_password.length > 0;
+    }
 
+    handleSubmit() {
+
+    }
+
+    render() {
+        return (
+<div>
+        	      <h1 className="Register-H1">Registration</h1>
+
+            <div className="Register">
+                  <form onSubmit={this.handleSubmit} className="RegisterForm">
+
+  			<p className="register-wide-label"> Choose your Spirit Animal </p>
+  			{this.avatars.map((avatar, index) => 
+       			<Button key={index} className="avatar-button" onClick={() => (this.setState({avatar: avatar, selected_avi: index}))}>
+       			<img src={process.env.PUBLIC_URL + avatar + ".png"} />
+       			</Button>
+  				)
+      		}
+
+      		<hr />
+
+       { this.state.avatar != "" &&  <p className="avatar-final" style={{background: this.state.selected_color}}>{<img src={process.env.PUBLIC_URL + this.state.avatar + ".png"} />}</p>}
+
+     <hr />
+
+        <p className="register-wide-label"> Choose a Color </p>
+
+			{this.colors.map((this_color, index) => 
+       			<Button key={index} style={{background: this_color}} className="color-button" onClick={() => (this.setState({color: this_color, selected_color: this_color}))}>
+       			</Button>
+  				)
+      		}
+
+		
+<Button className="register-button"
+            block
+            bsSize="large"
+            disabled={!this.validate()}
+            type="submit"
+        >next
+        </Button>
+</form>
+		</div>
+
+		</div>
+
+
+        );
+    }
+}
+
+
+//////////////////////////////////////////////////////
+
+class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            lastName: "",
+            username: "",
+            email: "",
+            password: "",
+            show_error: false,
+            error_message: "",
+            register_requested: false
+        };
 
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.validateForm = this.validateForm.bind(this);
-
 
     }
 
@@ -75,11 +161,9 @@ class Register extends Component {
     }
 
     setAvatar(item) {
-      this.setState(
-        {avatar: {item}}
-        );
-      }
-    
+        this.setState({ avatar: { item } });
+    }
+
 
     handleChange(event) {
         this.setState({
@@ -93,13 +177,17 @@ class Register extends Component {
         //     this.state.error_message = "Passwords do not match.";
         // }
         event.preventDefault();
-        this.props.register(
+        console.log(this.props.register(
             this.state.username,
             this.state.password,
             this.state.firstName,
             this.state.lastName,
             this.state.email,
-        );
+        ));
+
+        // somehow check whether or not the user was registered
+
+        this.register_requested();
     }
 
     showAlert(event) {
@@ -110,6 +198,11 @@ class Register extends Component {
         );
     }
 
+    register_requested() {
+        this.setState({
+            register_requested: true,
+        })
+    }
 
     componentDidMount() {
         document.body.style.backgroundColor = "#D6E4EE";
@@ -125,7 +218,11 @@ class Register extends Component {
         }
 
         return (
+
             <div>
+       {!this.state.register_requested ?
+       	<div>
+ 
       <LoginButton />
       <h1 className="Register-H1">Registration</h1>
     <div className="Register" >    
@@ -179,39 +276,6 @@ class Register extends Component {
             />
         </FormGroup>
 
-        <hr />
-
-        <p className="register-wide-label"> Choose your Spirit Animal </p>
-
-
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "crab"}))}><img src={process.env.PUBLIC_URL + "crab.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "kangaroo"}))}><img src={process.env.PUBLIC_URL + "kangaroo.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "shrimp"}))}><img src={process.env.PUBLIC_URL + "shrimp.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "turtle"}))}><img src={process.env.PUBLIC_URL + "turtle.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "snake"}))}><img src={process.env.PUBLIC_URL + "snake.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "squirrel"}))}><img src={process.env.PUBLIC_URL + "squirrel.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "stingray"}))}><img src={process.env.PUBLIC_URL + "stingray.png"} /></Button>
-       <Button className="avatar-button" onClick={() => (this.setState({avatar: "hedgehog"}))}><img src={process.env.PUBLIC_URL + "hedgehog.png"} /></Button>
-
-  
-
-       <p className="register-wide-label">{this.state.avatar}</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-
-
-        <hr />
-
-        <p className="register-wide-label"> Choose a Color </p>
-
-       <Button className="color-button" style={{background: "#7F91A8"}} onClick={() => (this.setState({color: "#7F91A8"}))}></Button>
-       <Button className="color-button" style={{background: "#BFD9A9"}} onClick={() => (this.setState({color: "#BFD9A9"}))}></Button>
-       <Button className="color-button" style={{background: "#9895C1"}} onClick={() => (this.setState({color: "#9895C1"}))}></Button>
-       <Button className="color-button" style={{background: "#A0A0A0"}} onClick={() => (this.setState({color: "#A0A0A0"}))}></Button>
-       <Button className="color-button" style={{background: "#7AA1A4"}} onClick={() => (this.setState({color: "#7AA1A4"}))}></Button>
-       <Button className="color-button" style={{background: "#EBD08C"}} onClick={() => (this.setState({color: "#EBD08C"}))}></Button>
-       <Button className="color-button" style={{background: "#ECA586"}} onClick={() => (this.setState({color: "#ECA586"}))}></Button>
-       <Button className="color-button" style={{background: "#DC8282"}} onClick={() => (this.setState({color: "#DC8282"}))}></Button>
-       <p className="register-wide-label">{this.state.color}</p>
 
 
         <Button className="register-button"
@@ -222,8 +286,13 @@ class Register extends Component {
         >next
         </Button>
     </form>
-    </div>
-    </div>
+
+    
+</div>
+</div>   
+:
+     <RegisterAvatarColor data={this.state}/> }
+</div>
         );
     }
 }
