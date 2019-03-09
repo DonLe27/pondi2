@@ -2,6 +2,26 @@
   LANDING-PAGE : size-agnostic stuff
 \*--------------------------------------*/
 
+/* width */
+textarea::-webkit-scrollbar {
+  width: 10px;
+  height: 80%;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+textarea::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 
 div .PondiCircles {
@@ -71,6 +91,10 @@ div .PondiCircles.four {
     left: -20vw;
 }
 
+
+.LandingForm p {
+	margin: 0;
+}
 .LandingForm form {
     position: absolute;
     top: 0vw;
@@ -83,6 +107,7 @@ div .PondiCircles.four {
     position: absolute;
     top: 0vw;
 }
+
 
 .LandingForm button {
     font-family: Barlow, sans-serif;
@@ -240,6 +265,39 @@ div .PondiCircles.four {
 @media only screen and (min-width: 940px) {
 
 
+    div .PondiCircles {
+        position: absolute;
+        border: .4vw solid #D2E6C1;
+        border-radius: 50vw;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 4px rgba(209, 209, 209, 0.25);
+
+        width: 50vw;
+        height: 50vw;
+
+        margin: 7.5vw 25vw 25vw 25vw;
+
+
+    }
+
+
+
+    .Landing h1 {
+        cursor: default;
+
+        position: absolute;
+
+        width: 50vw;
+        height: 13vw;
+        margin: 25vw 25vw 25vw 25vw;
+        font-family: Barlow, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        line-height: normal;
+        font-size: 10vw;
+        text-align: center;
+        color: #598EA4;
+    }
 
     .LandingForm button {
         font-size: 2vw;
@@ -252,6 +310,10 @@ div .PondiCircles.four {
         background-color: #E6EFF5;
         box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
         border: none;
+    }
+
+    .LandingForm label {
+        font-size: 2.5vw;
     }
 
     .LandingForm label textarea {
@@ -280,108 +342,110 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-	    LANDING-PAGE : large size;
+	    LANDING-PAGE : large size 1;
 \*--------------------------------------*/
 
-@media only screen and (min-width: 940px) {
+@media only screen and (min-width: 1040px) {
 
     div .PondiCircles {
-        position: absolute;
-        border: .3vw solid #D2E6C1;
-        border-radius: 50vw;
-        box-sizing: border-box;
-        box-shadow: 0px 4px 4px rgba(209, 209, 209, 0.25);
-
-        width: 30vw;
-        height: 30vw;
-
-        margin: 7.5vw 40vw 40vw 40vw;
-    }
-
-    div .PondiCircles.two {
-        -webkit-animation: gentle-move-two 10s infinite alternate ease;
-        animation: gentle-move-two 10s infinite alternate ease;
-        border: .4vw solid #D2E6C1;
-        animation-delay: .5s;
-        -webkit-animation-delay: .5s;
-    }
-
-    div .PondiCircles.three {
-        -webkit-animation: gentle-move-three 17s infinite alternate ease;
-        animation: gentle-move-three 17s infinite alternate ease;
-        border: .4vw solid #C1D6E5;
-        animation-delay: 1s;
-        -webkit-animation-delay: 1s;
-    }
-
-    div .PondiCircles.four {
-        -webkit-animation: gentle-move-four 8s infinite alternate ease;
-        animation: gentle-move-four 8s infinite alternate ease;
-        border: .4vw solid #D2E6C1;
-        animation-delay: 1.5s;
-        -webkit-animation-delay: 1.5s;
+        width: 40vw;
+        height: 40vw;
+        margin: 7.5vw 30vw 30vw 30vw;
     }
 
     .Landing h1 {
-        cursor: default;
-
-        position: absolute;
-
+        top: -2.5vw;
         width: 50vw;
-        height: 13vw;
-        margin: 18vw 25vw 25vw 30vw;
-        font-family: Barlow, sans-serif;
-        font-style: normal;
-        font-weight: 100;
-        line-height: normal;
         font-size: 7vw;
-        text-align: center;
-        color: #598EA4;
     }
 
+    .LandingForm {
+        top: 55vw;
+    }
 
-.LandingForm {
-    position: absolute;
-    top: 45vw;
-    text-align: center;
-    width: 70vw;
-    left: -20vw;
-}
-
-.LandingForm form {
-    position: absolute;
-    top: 0vw;
-    width: 69vw;
-}
-
-.LandingForm label {
-    font-size: 2.6vw;
-    width: 69vw;
-    position: absolute;
-    top: 0vw;
-}
-
-.LandingForm button {
-    font-family: Barlow, sans-serif;
+    .LandingForm label {
+        font-size: 2.6vw;
+    }
 }
 
 
+/*--------------------------------------*\
+	    LANDING-PAGE : large size 2;
+\*--------------------------------------*/
 
-.login-landing {
-    font-family: Barlow, sans-serif;
-    font-style: normal;
-    font-weight: 100;
-    line-height: normal;
-    font-size: 2.5vw;
-    width: 10vw;
-    position: absolute;
-    left: 90vw;
-    top: 1vw;
-    color: #598EA4;
-    text-decoration: none;
-}
+@media only screen and (min-width: 1200px) {
 
+    div .PondiCircles {
+        margin: 0 auto;
+        margin-top: 8vh;
+        margin-left: calc(50vw - 20vh);
+        width: 40vh;
+        height: 40vh;
+        border: .4vh solid #D2E6C1;
+    }
 
+    div .PondiCircles.two {
+
+        border: .4vh solid #D2E6C1;
+    }
+
+    div .PondiCircles.three {
+        border: .4vh solid #C1D6E5;
+    }
+
+    div .PondiCircles.four {
+        border: .4vh solid #D2E6C1;
+    }
+
+    .login-landing {
+    	font-size: 3vh;
+    }
+
+    .LandingForm p {
+    	margin-bottom: 2vh;
+    }
+
+    .Landing h1 {
+        width: 50vh;
+        text-align: center;
+        margin: 0;
+        margin-top: calc(30vh - 4vh);
+        margin-left: calc(50vw - 25vh);
+         margin-bottom: calc(30vh - 4vh);
+        margin-right: calc(50vw - 25vh);
+        font-size: 8vh;
+        height: 8vh;
+    }
+
+    .LandingForm {
+    	top: 58vh;
+    	width: 50vw;
+    }
+
+    .LandingForm label {
+    	font-size: 3.0vh;
+    	width: 100%;
+    }
+
+    .LandingForm label textarea {
+    	text-align: left;
+    	margin: 0 auto;
+    	text-align: left;
+    	margin-left: 0;
+    	position: relative;
+    	width: 80%;
+    	height: 15vh;
+    	max-width: 800px;
+    	font-size: 2.3vh;
+
+    }
+
+    .LandingForm Button {
+    	font-size: 2.5vh;
+    	width: 30%;
+    	margin-left: 5vw;
+    	top: 24vh;
+    }
 
 
 }
@@ -390,7 +454,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-  LANDING-PAGE : medium size, Animations
+  LANDING-PAGE : all sizes, Animations
 \*--------------------------------------*/
 
 /* Normal */
@@ -410,7 +474,7 @@ div .PondiCircles.four {
 
 @keyframes gentle-move {
     50% {
-        transform: translate(-15px, 10px);
+        transform: translate(-15px, 10px));
     }
 
     /*10% { transform: translateX(7px); }
