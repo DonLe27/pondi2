@@ -29,9 +29,7 @@ class RegisterAvatarColor extends Component {
         this.state = {
             firstName: this.props.data["firstName"],
             lastName: this.props.data["lastName"],
-            username: this.props.data["username"],
-            password: this.props.data["password"],
-            email: this.props.data["email"],
+            
             avatar: "",
             selected_avi: 0,
             color: "",
@@ -67,17 +65,14 @@ class RegisterAvatarColor extends Component {
     validate() {
         return this.state.firstName.length > 0 &&
             this.state.lastName.length > 0 &&
-            this.state.username.length > 0 &&
-            this.state.email.length > 0 &&
-            this.state.password.length > 0 &&
             this.state.avatar != "" &&
             this.state.color != "";
         //&& this.state.repeated_password.length > 0;
     }
 
     handleSubmit() {
-
-    }
+    	return (<Redirect to="/home" />);
+    }	
 
     render() {
         return (

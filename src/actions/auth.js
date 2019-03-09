@@ -159,7 +159,6 @@ export const updateAvatarColor = (avatar, color) => {
 */
 
 
-
 export const logout = () => {
   return (dispatch, getState) => {
     let headers = {"Content-Type": "application/json"};
