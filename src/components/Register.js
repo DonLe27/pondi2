@@ -97,7 +97,7 @@ class RegisterAvatarColor extends Component {
 
       		<hr />
 
-       { this.state.avatar != "" &&  <p className="avatar-final" style={{background: this.state.selected_color}}>{<img src={process.env.PUBLIC_URL + this.state.avatar + ".png"} />}</p>}
+       { (this.state.avatar != "" ) &&  <p className="avatar-final" style={{background: this.state.selected_color}}>{<img src={process.env.PUBLIC_URL + this.state.avatar + ".png"} />}</p>}
 
      <hr />
 
