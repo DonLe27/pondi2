@@ -2,6 +2,9 @@
 	    LOGIN-PAGE : medium size;
 \*--------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
+
 .Login-H1 {
   position: absolute;
   top: 17vh;

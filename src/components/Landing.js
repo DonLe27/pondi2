@@ -44,16 +44,21 @@ class Form extends React.Component {
   render() {
       return (
           <div className="form-group LandingForm">
-          <form onSubmit={this.handleSubmit}>
-              <label>
-                   Is water wet?
-                   <textarea type="text" value={this.state.value} onChange={this.handleChange} placeholder="Respond Here..." />
-              </label>
-              <Link to='/register'>
-                  <button className="btn btn-primary">Register</button>
-              </Link>
-          </form>
-          </div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <p>Is water wet?</p>
+            <textarea
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+              placeholder="Respond Here..."
+            />
+          </label>
+          <Link to="/register">
+            <button className="btn btn-primary">Register</button>
+          </Link>
+        </form>
+      </div>
 
          
       );

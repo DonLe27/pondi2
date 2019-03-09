@@ -2,6 +2,9 @@
 	    PROMPT_DISPLAY : medium size;
 \*--------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
+
 .prompt .prompt_title {
 	width: 40vw;	
 	margin-bottom: -1vw;

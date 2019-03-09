@@ -2,6 +2,8 @@
 	    SIDEBAR-PAGE : medium size;
 \*--------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
 
 .SideBar {
 	font-family: Barlow, sans-serif;

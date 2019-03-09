@@ -39,8 +39,15 @@ class Login extends Component {
         this.props.login(this.state.username, this.state.password);
 	}
 
+	 componentDidMount() {
+        document.body.style.backgroundColor = "#D6E4EE";
+    }
+
+    componentWillUnmount() {
+        document.body.style.backgroundColor = null;
+    }
+
     render() {
-        document.body.style = 'background: #D6E4EE;';
         if (this.props.isAuthenticated) {
             return <Redirect to="/home" />
         }
