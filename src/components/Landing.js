@@ -11,7 +11,7 @@ class Landing extends Component {
     }
     return (
       <div className="Landing" >
-      < LoginButton />
+      < LoginButton className="LoginButton login-landing"/>
           <div className="PondiCircles one"></div>
           <div className="PondiCircles two" ></div>
           <div className="PondiCircles three" ></div>
