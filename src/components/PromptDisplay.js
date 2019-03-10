@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CSSTransitionGroup } from 'react-transition-group'; // ES6
 import '../styles/promptdisplay.css';
 import ProfPic from './ProfPic.js'
 

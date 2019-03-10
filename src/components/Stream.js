@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, FormGroup, FormControl, ControlLabel, Alert } from "react-bootstrap";
-import { CSSTransitionGroup } from 'react-transition-group'; // ES6
 import PromptDisplay from './PromptDisplay.js'
 import FriendsBar from './FriendsBar.js'
 import '../styles/transitions.css';
