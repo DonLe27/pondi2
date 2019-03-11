@@ -74,6 +74,8 @@ class Login extends Component {
                 	onChange={this.handleChange}
                 	/>
             	</FormGroup>
+                            <RegisterButton/>
+
                 <Button className="login-button"
                     block
                     bsSize="large"
@@ -82,7 +84,6 @@ class Login extends Component {
                 >Log In
                 </Button>
             </form>
-            <RegisterButton/>
             </div>
             </div>
         )
