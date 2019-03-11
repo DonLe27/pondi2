@@ -22,6 +22,7 @@ export default function auth(state=initialState, action) {
     console.log('STATE:', state);
     return {...state, ...action.data, isAuthenticated: true, isLoading: false, errors: null};
 
+
     case 'AUTHENTICATION_ERROR':
     case 'LOGIN_FAILED':
     case 'REGISTRATION_FAILED':

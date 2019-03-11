@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://pondi.herokuapp.com';
 
 export const login = (username, password) => {
   return (dispatch, getState) => {
@@ -95,6 +95,7 @@ export const register = (username, password, firstName, lastName, email) => {
 
     return fetch(BASE_URL + "/api/auth/register/", {headers, body, method: "POST"})
       .then(res => {
+        console.log('registration response:', res);
         if (res.status < 500) {
           return res.json().then(data => {
             return {status: res.status, data};
@@ -121,15 +122,18 @@ export const register = (username, password, firstName, lastName, email) => {
 
 // TODO: Finish update request to update the color and the avatar for the newly-registered profile
 
-/*
-export const updateAvatarColor = (avatar, color) => {
+export const updateAvatarColor = (firstName, lastName, avatar, color) => {
   return (dispatch, getState) => {
-    let body = JSON.stringify({avatar, color});
+    let body = JSON.stringify({firstName, lastName, avatar, color});
+    const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*'
     };
+    if (token) {
+      headers["Authorization"] = `Token ${token}`;
+    }
 
     return fetch(BASE_URL + "/api/auth/update/", {headers, body, method: "PATCH"})
       .then(res => {
@@ -144,19 +148,22 @@ export const updateAvatarColor = (avatar, color) => {
       })
       .then(res => {
         if (res.status === 200) {
+          console.log('Status 200:', res.data);
           dispatch({type: 'REGISTRATION_SUCCESSFUL', data: res.data });
           return res.data;
         } else if (res.status === 403 || res.status === 401) {
+          console.log('Status 403 or 401: auth error!');
           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
           throw res.data;
         } else {
+          console.log('Failed registration :(');
           dispatch({type: "REGISTRATION_FAILED", data: res.data});
           throw res.data;
         }
       })
   }
 }
-*/
+
 
 
 export const logout = () => {

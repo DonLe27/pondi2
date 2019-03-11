@@ -8,47 +8,46 @@ body > #root > div {
 .wave {
     width: 100%;
     position: absolute;
-    bottom: 0px;
+    bottom: -5vw;
 }
 
 .oops {
     position: absolute;
-    bottom: 20vw;
+    bottom: 17vw;
     left: 15%;
 
     font-family: Barlow, sans-serif;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    font-size: 3vw;
+    font-size: 2vw;
 
     color: #767676;
 }
 
 .uncharted {
     position: absolute;
-    bottom: 12.7vw;
+    bottom: 10.5vw;
     left: 15%;
 
     font-family: Barlow;
     font-style: normal;
-    font-weight: bolder;
-    line-height: normal;
-    font-size: 5.8vw;
+    font-weight: 800;
+    font-size: 5vw;
 
     color: #598EA4;
 }
 
 .return {
     position: absolute;
-    bottom: 8vw;
-    left: 50%;
+    bottom: 7vw;
+    left: 52%;
 
     font-family: Barlow;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    font-size: 3vw;
+    font-size: 2vw;
 
     color: #767676;
 }
@@ -59,4 +58,10 @@ body > #root > div {
     top: 10%;
     height: 180px;
 
+}
+
+
+.link {
+    color: #598EA4;
+    text-decoration: none;
 }

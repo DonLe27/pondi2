@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
+.login-landing {
+    margin-top: 2vh;
+    margin-right: 2vw;
+}
+
+.login-link {
+    text-decoration: none;
+
+    font-family: Barlow;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 30px;
+    text-align: center;
+
+    color: #98AABB;
+}
