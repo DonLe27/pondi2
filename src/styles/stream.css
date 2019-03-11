@@ -9,8 +9,8 @@
 	box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-		width: calc(70%);
-	float: right;
-	height: calc(100vh);
+		width: calc(70vw);
+	float: left;
+	height: calc(100vh); 
 	/*border: solid 5px black;*/
 }

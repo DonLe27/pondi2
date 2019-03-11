@@ -40,6 +40,10 @@ class Form extends React.Component {
       alert('A name was submitted: ' + this.state.value);
       event.preventDefault();
   }
+
+  componentDidMount() {
+            document.body.style.margin = "0";
+  }
   
   render() {
       return (

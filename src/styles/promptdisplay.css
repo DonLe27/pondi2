@@ -33,6 +33,7 @@
 }
 
 .prompt .prompt_date {
+	font-family: Barlow, sans-serif;
 	width: 10vw; float: right;	color: #b2b2b2;
 }
 

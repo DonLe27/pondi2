@@ -93,7 +93,7 @@ div .PondiCircles.four {
 
 
 .LandingForm p {
-	margin: 0;
+    margin: 0;
 }
 .LandingForm form {
     position: absolute;
@@ -132,8 +132,89 @@ div .PondiCircles.four {
     text-decoration: none !important;
 }
 
+
 /*--------------------------------------*\
-	    LANDING-PAGE : rly rly small size;
+        LANDING-PAGE : mobile size;
+\*--------------------------------------*/
+
+@media only screen and (min-width: 360px) {
+
+    div .PondiCircles {
+    position: absolute;
+    border: .6vw solid #D2E6C1;
+    border-radius: 50vw;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(209, 209, 209, 0.25);
+
+    width: 50vw;
+    height: 50vw;
+
+    margin: 7.5vw 25vw 25vw 25vw;
+
+
+}
+
+div .PondiCircles.two {
+    border: 1vw solid #D2E6C1;
+    }
+
+
+
+div .PondiCircles.three {
+    border: .4vw solid #C1D6E5;
+    }
+    
+
+div .PondiCircles.four {
+    border: .8vw solid #C1D6E5;
+    }
+    
+    .login-landing {
+        font-size: 3.5vw;
+        left: 85vw;
+    }
+
+    .LandingForm label {
+        font-size: 3.5vw;
+    }
+
+    .LandingForm button {
+        font-size: 3vw;
+        padding: 1.3vw;
+        left: 54vw;
+        width: 30vw;
+        position: absolute;
+        top: 19vh;
+        border-radius: 5vw;
+        background-color: #E6EFF5;
+        box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
+        border: none;
+    }
+
+    .LandingForm label textarea {
+        margin-top: 1.5vw;
+        height: 15vh;
+        width: 69vw;
+        border-radius: 1.5vw;
+        border: none;
+
+        background: linear-gradient(270deg, #C1D6E5 0%, #D6E4EE 57.64%, #FFFFFF 131.67%);
+        box-shadow: 0px 15px 20px rgba(70, 122, 151, 0.15);
+
+        font-family: Barlow, sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        line-height: normal;
+        font-size: 2.5vw;
+        padding: 1.5vw;
+
+    }
+
+
+}
+
+/*--------------------------------------*\
+        LANDING-PAGE : rly rly small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 600px) {
@@ -178,7 +259,7 @@ div .PondiCircles.four {
 }
 
 /*--------------------------------------*\
-	    LANDING-PAGE : rly small size;
+        LANDING-PAGE : rly small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 710px) {
@@ -220,7 +301,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-	    LANDING-PAGE : small size;
+        LANDING-PAGE : small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 810px) {
@@ -262,7 +343,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-	    LANDING-PAGE : medium size;
+        LANDING-PAGE : medium size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 940px) {
@@ -345,7 +426,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-	    LANDING-PAGE : large size 1;
+        LANDING-PAGE : large size 1;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 1040px) {
@@ -373,7 +454,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-	    LANDING-PAGE : large size 2;
+        LANDING-PAGE : large size 2;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 1200px) {
@@ -401,11 +482,11 @@ div .PondiCircles.four {
     }
 
     .login-landing {
-    	font-size: 3vh;
+        font-size: 3vh;
     }
 
     .LandingForm p {
-    	margin-bottom: 2vh;
+        margin-bottom: 2vh;
     }
 
     .Landing h1 {
@@ -421,33 +502,33 @@ div .PondiCircles.four {
     }
 
     .LandingForm {
-    	top: 58vh;
-    	width: 50vw;
+        top: 58vh;
+        width: 50vw;
     }
 
     .LandingForm label {
-    	font-size: 3.0vh;
-    	width: 100%;
+        font-size: 3.0vh;
+        width: 100%;
     }
 
     .LandingForm label textarea {
-    	text-align: left;
-    	margin: 0 auto;
-    	text-align: left;
-    	margin-left: 0;
-    	position: relative;
-    	width: 80%;
-    	height: 15vh;
-    	max-width: 800px;
-    	font-size: 2.3vh;
+        text-align: left;
+        margin: 0 auto;
+        text-align: left;
+        margin-left: 0;
+        position: relative;
+        width: 80%;
+        height: 15vh;
+        max-width: 800px;
+        font-size: 2.3vh;
 
     }
 
     .LandingForm Button {
-    	font-size: 2.5vh;
-    	width: 30%;
-    	margin-left: 5vw;
-    	top: 24vh;
+        font-size: 2.5vh;
+        width: 30%;
+        margin-left: 5vw;
+        top: 24vh;
     }
 
 

@@ -41,6 +41,7 @@ class Login extends Component {
 
 	 componentDidMount() {
         document.body.style.backgroundColor = "#D6E4EE";
+        document.body.style.margin = "0";
     }
 
     componentWillUnmount() {

@@ -1,6 +1,6 @@
 
 /*--------------------------------------*\
-           Register : medium size;
+           Login : medium size;
 \*--------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Barlow');
@@ -123,12 +123,12 @@
 
 .RegisterButton {
  width: 100%;
- margin-top: 2.5vw;
- margin-bottom: 1vw;
+ margin-top: 2.5vh;
+ margin-bottom: 1vh;
 }
 
 .RegisterButton div:first-child {
-width: 50%;float:left;	text-align: right;
+width: 50%;float:left;  text-align: right;
 padding-right: 1vw;
 
 }
