@@ -29,7 +29,12 @@ class SideBar extends React.Component {
     this.username = this.userData["username"];
   }
 
+  componentWillReceiveProps (nextProps) {
+    this.setState({ data: nextProps.data });  
+  }
+
   render() {
+    console.log('SIDE BAR IS RENDERING!');
     var addStream = this.props.addStream;
     var addOcean = this.props.addOcean;
     var addArchive = this.props.addArchive;

@@ -64,16 +64,21 @@ class StreamHolder extends React.Component {
             ]
         };
         this.state = {
+            username: '',
+            avatar: '',
+            color: '',
+            archivePosts: [],
+            streamPosts: [],
             stream: true,
             archive: false,
             ocean: false,
             prompt: false,
             leftSide: <SideBar 
-            userData={this.userData}
-            addStream={this.addStream.bind(this)} 
-            addArchive={this.addArchive.bind(this)}
-            addOcean={this.addOcean.bind(this)}
-            addPrompt={this.addPrompt.bind(this)}
+                userData={this.userData}
+                addStream={this.addStream.bind(this)} 
+                addArchive={this.addArchive.bind(this)}
+                addOcean={this.addOcean.bind(this)}
+                addPrompt={this.addPrompt.bind(this)}
             />
 
 
@@ -137,9 +142,16 @@ class StreamHolder extends React.Component {
                     return res.json().then(data => {
                         console.log('DATA:', data);
                         this.setState({
-                            
-                        })
+                            username : data.user.username,
+                            avatar : data.animal,
+                            color : data.color
+                        });
+                        this.userData.username = data.user.username;
+                        this.userData.avatar = data.animal;
+                        this.userData.color = data.color;
+                        console.log("INFO:", this.userData);
                     })
+                    
                 } else {
                     console.log("Server Error!");
                     throw res;
