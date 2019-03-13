@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { FormControl, InputGroup, Button } from "react-bootstrap";
 import "../styles/prompt.css";
 
+import { connect } from "react-redux";
+import { auth } from "../actions";
+
 class Prompt extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       imagefile: null,
       text: "",
-      prompt: "If you could go anywhere real or fictional, where would it be?"
+      prompt: "This is where the prompt goes"
     };
   }
 
@@ -22,7 +25,8 @@ class Prompt extends React.Component {
   };
 
   uploadHandler = () => {
-    console.log(this.state.imagefile);
+    console.log(this.state.text);
+    console.log(this.props.post(1, this.state.text, 0, "this is a theme", "o"));
   };
 
   render() {
@@ -48,7 +52,7 @@ class Prompt extends React.Component {
           />
           <input
             type="file"
-            id="file"
+            id="file"git 
             className="inputfile"
             accept="image/*"
             onChange={this.fileChangedHandler}
@@ -72,4 +76,25 @@ class Prompt extends React.Component {
   }
 }
 
-export default Prompt;
+
+const mapStateToProps = state => {
+    let errors = [];
+    if (state.auth.errors) {
+        errors = Object.keys(state.auth.errors).map(field => {
+            return { field, message: state.auth.errors[field] };
+        });
+    }
+    return {
+        errors,
+        isAuthenticated: state.auth.isAuthenticated
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        post: (prompt, body, profile, theme, privacy) => 
+            dispatch(auth.post(prompt, body, profile, theme, privacy)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Prompt);

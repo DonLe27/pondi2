@@ -50,7 +50,7 @@ class Form extends React.Component {
           <div className="form-group LandingForm">
         <form onSubmit={this.handleSubmit}>
           <label>
-            <p>Is water wet?</p>
+            <p>What is something that made you smile today?</p>
             <textarea
               type="text"
               value={this.state.value}

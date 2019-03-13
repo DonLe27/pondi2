@@ -8,7 +8,7 @@ class FriendsBar extends React.Component{
 	{
 		super(props);
 		this.state = {
-			categories : [ "FRIENDS", "CLOSE FRIENDS"],
+			categories : [ "FRIENDS"],
 		}
 		
 	}
