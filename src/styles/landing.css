@@ -2,6 +2,11 @@
   LANDING-PAGE : size-agnostic stuff
 \*--------------------------------------*/
 
+body {
+    min-width: 500px;
+    position: relative;
+}
+
 /* width */
 textarea::-webkit-scrollbar {
   width: 10px;
@@ -89,11 +94,12 @@ div .PondiCircles.four {
     text-align: center;
     width: 70vw;
     left: -20vw;
+    min-width: 380px;
 }
 
 
 .LandingForm p {
-    margin: 0;
+	margin: 0;
 }
 .LandingForm form {
     position: absolute;
@@ -214,7 +220,7 @@ div .PondiCircles.four {
 }
 
 /*--------------------------------------*\
-        LANDING-PAGE : rly rly small size;
+	    LANDING-PAGE : rly rly small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 600px) {
@@ -259,7 +265,7 @@ div .PondiCircles.four {
 }
 
 /*--------------------------------------*\
-        LANDING-PAGE : rly small size;
+	    LANDING-PAGE : rly small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 710px) {
@@ -301,7 +307,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-        LANDING-PAGE : small size;
+	    LANDING-PAGE : small size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 810px) {
@@ -343,7 +349,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-        LANDING-PAGE : medium size;
+	    LANDING-PAGE : medium size;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 940px) {
@@ -426,7 +432,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-        LANDING-PAGE : large size 1;
+	    LANDING-PAGE : large size 1;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 1040px) {
@@ -454,7 +460,7 @@ div .PondiCircles.four {
 
 
 /*--------------------------------------*\
-        LANDING-PAGE : large size 2;
+	    LANDING-PAGE : large size 2;
 \*--------------------------------------*/
 
 @media only screen and (min-width: 1200px) {
@@ -482,11 +488,11 @@ div .PondiCircles.four {
     }
 
     .login-landing {
-        font-size: 3vh;
+    	font-size: 3vh;
     }
 
     .LandingForm p {
-        margin-bottom: 2vh;
+    	margin-bottom: 2vh;
     }
 
     .Landing h1 {
@@ -502,33 +508,33 @@ div .PondiCircles.four {
     }
 
     .LandingForm {
-        top: 58vh;
-        width: 50vw;
+    	top: 58vh;
+    	width: 50vw;
     }
 
     .LandingForm label {
-        font-size: 3.0vh;
-        width: 100%;
+    	font-size: 3.0vh;
+    	width: 100%;
     }
 
     .LandingForm label textarea {
-        text-align: left;
-        margin: 0 auto;
-        text-align: left;
-        margin-left: 0;
-        position: relative;
-        width: 80%;
-        height: 15vh;
-        max-width: 800px;
-        font-size: 2.3vh;
+    	text-align: left;
+    	margin: 0 auto;
+    	text-align: left;
+    	margin-left: 0;
+    	position: relative;
+    	width: 80%;
+    	height: 15vh;
+    	max-width: 800px;
+    	font-size: 2.3vh;
 
     }
 
     .LandingForm Button {
-        font-size: 2.5vh;
-        width: 30%;
-        margin-left: 5vw;
-        top: 24vh;
+    	font-size: 2.5vh;
+    	width: 30%;
+    	margin-left: 5vw;
+    	top: 24vh;
     }
 
 

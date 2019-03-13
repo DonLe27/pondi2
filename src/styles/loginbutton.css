@@ -12,8 +12,15 @@
     font-style: normal;
     font-weight: normal;
     line-height: normal;
-    font-size: 30px;
+    font-size: 5vw;
     text-align: center;
 
     color: #98AABB;
+}
+
+@media only screen and (min-width: 750px)
+{
+    .login-link {
+        font-size: 3vh;
+    }   
 }
