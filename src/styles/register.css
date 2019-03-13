@@ -14,6 +14,7 @@ background: linear-gradient(302.47deg, #D6E4EE -0.66%, #FFFFFF 134.48%);
     position: absolute;
     width: 50vh;
     margin: 0;
+    margin-bottom: 5vh;
     left: calc(50vw - 30vh);
     top: 17vh;
     border: 0px solid black;
