@@ -72,7 +72,7 @@ class SideBar extends React.Component {
           block
           bsSize="large"
           addArchive={this.props.addPrompt}
-          onClick={0/*i => addPrompt("somevar")*/}
+          onClick={i => addPrompt("somevar")}
         >
           prompt
         </Button>

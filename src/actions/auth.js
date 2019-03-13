@@ -2,7 +2,7 @@ const BASE_URL = 'https://pondi.herokuapp.com';
 
 export const login = (username, password) => {
   return (dispatch, getState) => {
-    let headers = {"Content-Type": "application/json", 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Credentials" : true, 'Accept': 'application/json' };
+    let headers = {"Content-Type": "application/json",  'Accept': 'application/json' };
     let body = JSON.stringify({username, password});
     // let headers = {
     //   "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const loadUser = () => {
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+    //  'Access-Control-Allow-Origin': '*'
     };
 
     if (token) {
@@ -62,6 +62,7 @@ export const loadUser = () => {
 
     return fetch(BASE_URL + '/api/auth/profile/', {headers, method: "GET"})
       .then(res => {
+        console.log('PROFILE_RESPONSE:', res);
         if (res.status < 500) {
           return res.json().then(data => {
             return {status: res.status, data};
@@ -84,13 +85,13 @@ export const loadUser = () => {
 }
 
 
-export const register = (username, password, firstName, lastName, email) => {
+export const register = (username, password, first_name, last_name, email) => {
   return (dispatch, getState) => {
-    let body = JSON.stringify({username, password, firstName, lastName, email});
+    let body = JSON.stringify({username, password, first_name, last_name, email});
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+    //  'Access-Control-Allow-Origin': '*'
     };
 
     return fetch(BASE_URL + "/api/auth/register/", {headers, body, method: "POST"})
@@ -122,14 +123,14 @@ export const register = (username, password, firstName, lastName, email) => {
 
 // TODO: Finish update request to update the color and the avatar for the newly-registered profile
 
-export const updateAvatarColor = (firstName, lastName, avatar, color) => {
+export const updateAvatarColor = (first_name, last_name, avatar, color) => {
   return (dispatch, getState) => {
-    let body = JSON.stringify({firstName, lastName, avatar, color});
+    let body = JSON.stringify({first_name, last_name, avatar, color});
     const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+     // 'Access-Control-Allow-Origin': '*'
     };
     if (token) {
       headers["Authorization"] = `Token ${token}`;

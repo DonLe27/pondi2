@@ -12,6 +12,7 @@ import Stream from './Stream.js';
 import Ocean from './Ocean.js';
 import Archive from './Archive.js';
 import SideBar from './SideBar.js';
+import Prompt from './Prompt.js';
 
 class StreamHolder extends React.Component {
     constructor(props) {
@@ -65,11 +66,13 @@ class StreamHolder extends React.Component {
             stream: true,
             archive: false,
             ocean: false,
+            prompt: false,
             leftSide: <SideBar 
             userData={this.userData}
             addStream={this.addStream.bind(this)} 
             addArchive={this.addArchive.bind(this)}
             addOcean={this.addOcean.bind(this)}
+            addPrompt={this.addPrompt.bind(this)}
             />
 
 
@@ -87,7 +90,7 @@ class StreamHolder extends React.Component {
 
 
 
-        this.setState({ archive: false, stream: true, ocean: false });
+        this.setState({ archive: false, stream: true, ocean: false, prompt: false });
 
 
 
@@ -96,13 +99,19 @@ class StreamHolder extends React.Component {
 
     addOcean(i) {
 
-        this.setState({ archive: false, stream: false, ocean: true });
+        this.setState({ archive: false, stream: false, ocean: true, prompt: false });
 
     }
 
     addArchive(i) {
 
-        this.setState({ archive: true, stream: false, ocean: false });
+        this.setState({ archive: true, stream: false, ocean: false, prompt: false });
+
+    }
+
+    addPrompt(i) {
+
+        this.setState({ archive: false, stream: false, ocean: false, prompt: true });
 
     }
 
@@ -172,6 +181,18 @@ class StreamHolder extends React.Component {
                              </div>
 
                )}
+        </Motion>
+
+        <Motion 
+            defaultStyle={{opacity: 0}}
+            style={{opacity: spring(this.state.prompt ? 1 : 0, {stiffness: 50, damping: 20})}}
+        >
+            {(style) => (
+                <div  style={{opacity: style.opacity}}>
+            {this.state.prompt && <Prompt />}
+                          </div>
+
+                )}
         </Motion>
 
          
