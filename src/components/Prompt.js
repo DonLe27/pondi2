@@ -9,7 +9,7 @@ class Prompt extends React.Component {
     this.state = {
       imagefile: null,
       text: "",
-      prompt: "This is where the prompt goes"
+      prompt: "If you could go anywhere real or fictional, where would it be?"
     };
   }
 

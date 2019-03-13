@@ -11,13 +11,15 @@ class RegisterAvatarColor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: this.props.data["firstName"],
-            lastName: this.props.data["lastName"],
+            first_name: this.props.data["first_name"],
+            last_name: this.props.data["last_name"],
             
             avatar: "",
             selected_avi: 0,
             color: "",
-            selected_color: "#AAAAAA"
+            selected_color: "#AAAAAA",
+
+            redirect : false
         }
 
         // Avatars:
@@ -44,13 +46,13 @@ class RegisterAvatarColor extends Component {
         ]
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.redirectToHome = this.redirectToHome.bind(this);
     }
 
 
-
     validate() {
-        return this.state.firstName.length > 0 &&
-            this.state.lastName.length > 0 &&
+        return this.state.first_name.length > 0 &&
+            this.state.last_name.length > 0 &&
             this.state.avatar !== "" &&
             this.state.color !== "";
         //&& this.state.repeated_password.length > 0;
@@ -68,7 +70,15 @@ class RegisterAvatarColor extends Component {
     	//return (<Redirect to="/home" />);
     }	
 
+    redirectToHome() {
+        this.setState({redirect: true})    
+    }
+
     render() {
+        if (this.state.redirect === true) {
+            console.log('REDIRECTS FOR SOME REASON1');
+            return (<Redirect to='/home'></Redirect>)
+        }
         return (
 <div>
         	      <h1 className="Register-H1">Registration</h1>
@@ -104,6 +114,8 @@ class RegisterAvatarColor extends Component {
             bsSize="large"
             disabled={!this.validate()}
             type="submit"
+            onClick={this.redirectToHome}
+      
         >next
         </Button>
 </form>
@@ -134,7 +146,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateAvatarColor: (firstName, lastName, avatar, color) => dispatch(auth.updateAvatarColor(firstName, lastName, avatar, color))
+        updateAvatarColor: (first_name, last_name, animal, color) => dispatch(auth.updateAvatarColor(first_name, last_name, animal, color))
     };
 }
 

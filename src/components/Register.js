@@ -30,8 +30,8 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             username: "",
             email: "",
             password: "",
@@ -48,8 +48,8 @@ class Register extends Component {
     }
 
     validateForm() {
-        return this.state.firstName.length > 0 &&
-            this.state.lastName.length > 0 &&
+        return this.state.first_name.length > 0 &&
+            this.state.last_name.length > 0 &&
             this.state.username.length > 0 &&
             this.state.email.length > 0 &&
             this.state.password.length > 0;
@@ -76,8 +76,8 @@ class Register extends Component {
         console.log(this.props.register(
             this.state.username,
             this.state.password,
-            this.state.firstName,
-            this.state.lastName,
+            this.state.first_name,
+            this.state.last_name,
             this.state.email,
         ));
 
@@ -109,9 +109,9 @@ class Register extends Component {
     }
 
     render() {
-        if (this.props.isAuthenticated) {
-            return <Redirect to="/home" />
-        }
+        // if (this.props.isAuthenticated) {
+        //     return <Redirect to="/home" />
+        // }
 
         return (
 
@@ -123,21 +123,21 @@ class Register extends Component {
       <h1 className="Register-H1">Registration</h1>
     <div className="Register" >    
       <form onSubmit={this.handleSubmit} className="RegisterForm">
-        <FormGroup controlId="firstName" bsSize="large">
+        <FormGroup controlId="first_name" bsSize="large">
             <FormControl className="register-fname"
             autoFocus
             type="text"
             placeholder="first name"
-            value={this.state.firstName}
+            value={this.state.first_name}
             onChange={this.handleChange}
             />
         </FormGroup>
-        <FormGroup controlId="lastName" bsSize="large">
+        <FormGroup controlId="last_name" bsSize="large">
             <FormControl className="register-lname"
             autoFocus
             type="text"
             placeholder="last name"
-            value={this.state.lastName}
+            value={this.state.last_name}
             onChange={this.handleChange}
             />
         </FormGroup>
@@ -208,9 +208,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        register: (username, password, firstName, lastName, email) => 
-            dispatch(auth.register(username, password, firstName, lastName, email)),
-        updateAvatarColor: (firstName, lastName, avatar, color) => dispatch(auth.updateAvatarColor(firstName, lastName, avatar, color))
+        register: (username, password, first_name, last_name, email) => 
+            dispatch(auth.register(username, password, first_name, last_name, email)),
+        updateAvatarColor: (first_name, last_name, animal, color) => dispatch(auth.updateAvatarColor(first_name, last_name, animal, color))
     };
 }
 

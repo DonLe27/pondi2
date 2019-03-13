@@ -20,12 +20,12 @@ class StreamHolder extends React.Component {
         super(props);
         // parse through data, get username, etc
         this.userData = {
-            "username": "this is a username",
+            "username": "gudetama",
             "avatar": "stingray",
             "prompts": [{
                     "title": "This is the first title, from archive",
                     "content": "this is some content. This is some more content. This is more content",
-                    "date": "Jan 1, 1111",
+                    "date": "Feb 1, 2019",
                     "avatar": "stingray"
                 },
                 {
@@ -123,7 +123,7 @@ class StreamHolder extends React.Component {
 
     componentDidMount() {
         document.body.style.margin = "0";
-        document.body.style.overflow = "hidden";
+        //document.body.style.overflow = "hidden";
         let token = this.props.token;
         console.log("TOKEN:", token);
         let headers = {
@@ -161,7 +161,7 @@ class StreamHolder extends React.Component {
     }
 
     componentWillUnmount() {
-        document.body.style.overflow = "hidden";
+        //document.body.style.overflow = "hidden";
         
     }
 

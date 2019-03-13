@@ -125,10 +125,16 @@ export const register = (username, password, first_name, last_name, email) => {
 
 // TODO: Finish update request to update the color and the avatar for the newly-registered profile
 
-export const updateAvatarColor = (first_name, last_name, avatar, color) => {
+export const updateAvatarColor = (first_name, last_name, animal, color) => {
   return (dispatch, getState) => {
-    let body = JSON.stringify({first_name, last_name, avatar, color});
-    console.log('BODY:', body);
+    let tmpbody = {
+      'first_name' : first_name,
+      'last_name' : last_name,
+      'animal' : animal, 
+      'color': color
+    }
+    let body = JSON.stringify(tmpbody.first_name);
+    console.log('UPDATE AVATAR BODY:', body);
     const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
