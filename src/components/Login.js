@@ -37,6 +37,7 @@ class Login extends Component {
 	handleSubmit = (event) => {
         event.preventDefault();
         this.props.login(this.state.username, this.state.password);
+        this.props.loadUser();
 	}
 
 	 componentDidMount() {
@@ -100,14 +101,20 @@ const mapStateToProps = state => {
     }
     return {
       errors,
-      isAuthenticated: state.auth.isAuthenticated
+      isAuthenticated: state.auth.isAuthenticated,
+      token: state.auth.token
     };
 }
   
 const mapDispatchToProps = dispatch => {
     return {
         login: (username, password) => {
-        return dispatch(auth.login(username, password));
+            return dispatch(
+                auth.login(username, password)
+            );
+        },
+        loadUser: () => {
+            return dispatch(auth.loadUser());
         }
     };
 }

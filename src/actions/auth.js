@@ -1,50 +1,8 @@
 const BASE_URL = 'https://pondi.herokuapp.com';
 
-export const login = (username, password) => {
-  return (dispatch, getState) => {
-    let headers = {"Content-Type": "application/json",  'Accept': 'application/json' };
-    let body = JSON.stringify({username, password});
-    // let headers = {
-    //   "Content-Type": "application/json",
-    //   // 'Accept': 'application/json',
-    //   'Access-Control-Allow-Origin': '*'
-    // };
-    console.log('BODY:', body);
-
-    fetch(BASE_URL + "/api/auth/login/", {headers, body, method: "POST"})
-      .then(function(res) {
-        if (res.status < 500) {
-          return res.json().then(data => {
-            return {
-              status: res.status,
-              data
-            }
-          })
-        } else {
-          console.log("Server Error!");
-          throw res;
-        }
-      })
-      .then(function(res) {
-        if (res.status === 200) {
-          console.log("LOGIN SUCCESSFUL");
-          dispatch({type: 'LOGIN_SUCCESSFUL', data: res.data });
-          //dispatch({type: 'USER_LOADED', user: res.data });
-          return res.data;
-        } else if (res.status === 403 || res.status === 401) {
-          console.log("AUTH ERROR");
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
-          throw res.data;
-        } else {
-          console.log("LOGIN FAIL");
-          dispatch({type: "LOGIN_FAILED", data: res.data});
-          throw res.data;
-        }
-      })
-  }
-}
 
 export const loadUser = () => {
+  console.log('LOAD USER ACTUALLY CALLED');
   return (dispatch, getState) => {
     dispatch({type: "USER_LOADING"});
 
@@ -78,6 +36,50 @@ export const loadUser = () => {
           return res.data;
         } else if (res.status >= 400 && res.status < 500) {
           dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+          throw res.data;
+        }
+      })
+  }
+}
+
+
+export const login = (username, password) => {
+  return (dispatch, getState) => {
+    let headers = {"Content-Type": "application/json",  'Accept': 'application/json' };
+    let body = JSON.stringify({username, password});
+    // let headers = {
+    //   "Content-Type": "application/json",
+    //   // 'Accept': 'application/json',
+    //   'Access-Control-Allow-Origin': '*'
+    // };
+    console.log('BODY:', body);
+
+    fetch(BASE_URL + "/api/auth/login/", {headers, body, method: "POST"})
+      .then(function(res) {
+        if (res.status < 500) {
+          return res.json().then(data => {
+            return {
+              status: res.status,
+              data
+            }
+          })
+        } else {
+          console.log("Server Error!");
+          throw res;
+        }
+      })
+      .then(function(res) {
+        if (res.status === 200) {
+          console.log("LOGIN SUCCESSFUL");
+          dispatch({type: 'LOGIN_SUCCESSFUL', data: res.data });
+          return res.data;
+        } else if (res.status === 403 || res.status === 401) {
+          console.log("AUTH ERROR");
+          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+          throw res.data;
+        } else {
+          console.log("LOGIN FAIL");
+          dispatch({type: "LOGIN_FAILED", data: res.data});
           throw res.data;
         }
       })
@@ -126,6 +128,7 @@ export const register = (username, password, first_name, last_name, email) => {
 export const updateAvatarColor = (first_name, last_name, avatar, color) => {
   return (dispatch, getState) => {
     let body = JSON.stringify({first_name, last_name, avatar, color});
+    console.log('BODY:', body);
     const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",

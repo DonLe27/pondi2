@@ -46,7 +46,7 @@ class RootContainerComponent extends React.Component{
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/home" component={StreamHolder} />
+          <PrivateRoute exact path="/home" component={StreamHolder} />
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />

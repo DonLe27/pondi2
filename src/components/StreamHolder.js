@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Logout from './Logout.js';
 import { connect } from "react-redux";
+import {auth} from "../actions";
 
 import '../styles/transitions.css';
 import '../styles/streamholder.css';
@@ -118,11 +119,38 @@ class StreamHolder extends React.Component {
     componentDidMount() {
         document.body.style.margin = "0";
         document.body.style.overflow = "hidden";
+        let token = this.props.token;
+        console.log("TOKEN:", token);
+        let headers = {
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+          //  'Access-Control-Allow-Origin': '*'
+        };
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+        setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+            .then(res => {
+                console.log('PROFILE_RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        console.log('DATA:', data);
+                        this.setState({
+                            
+                        })
+                    })
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
     }
 
     componentWillUnmount() {
         document.body.style.overflow = "hidden";
-
+        
     }
 
 
@@ -134,6 +162,7 @@ class StreamHolder extends React.Component {
         const { ...props } = this.props;
 
         return (
+            //this.state.loading ? this.props.loadUser() :
             <div>
 
             <Motion 
@@ -202,6 +231,7 @@ class StreamHolder extends React.Component {
 
        < Logout className="Logout-button"/> 
       </div>
+
         );
     }
 
@@ -209,12 +239,15 @@ class StreamHolder extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        token: state.auth.token
     };
 }
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        loadUser: () => dispatch(auth.loadUser()),
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamHolder);
