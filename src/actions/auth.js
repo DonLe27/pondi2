@@ -145,7 +145,7 @@ export const updateAvatarColor = (first_name, last_name, animal, color) => {
       headers["Authorization"] = `Token ${token}`;
     }
 
-    return fetch(BASE_URL + "/api/auth/update/", {headers, body, method: "PATCH"})
+    return fetch(BASE_URL + "/api/auth/update/", {headers, tmpbody, method: "PATCH"})
       .then(res => {
         if (res.status < 500) {
           return res.json().then(data => {
@@ -178,15 +178,29 @@ export const updateAvatarColor = (first_name, last_name, animal, color) => {
 
 export const post = (prompt, body, profile, theme, privacy) => {
   return (dispatch, getState) => {
-    let boddy = JSON.stringify({prompt, body, profile, theme, privacy});
+  let boddy = JSON.stringify({prompt, body, profile, theme, privacy});
+
+    let tmpbody = {
+      'prompt' : 2,
+      'body' : "This is something",
+      'profile' : 1, 
+      'theme': "THeme is here",
+      'privacy': "c"
+    }
+    console.log("Body: " + boddy);
+
     console.log(boddy);
+    const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-    //  'Access-Control-Allow-Origin': '*'
+     // 'Access-Control-Allow-Origin': '*'
     };
-
-    return fetch(BASE_URL + "/api/auth/myposts/", {headers, boddy, method: "POST"})
+    if (true) {
+      headers["Authorization"] = `Token ${token}`;
+    }
+    console.log(tmpbody);
+    return fetch(BASE_URL + "/api/auth/myposts/", {headers, tmpbody, method: "POST"})
       .then(res => {
         console.log('Post Response:', res);
         if (res.status < 500) {

@@ -26,8 +26,24 @@ class Prompt extends React.Component {
 
   uploadHandler = () => {
     console.log(this.state.text);
-    console.log(this.props.post(1, this.state.text, 0, "this is a theme", "o"));
+    console.log(this.props.post(1, this.state.text, this.props.id, "this is a theme", "o"));
   };
+
+  componentDidMount() {
+        document.body.style.margin = "0";
+        //document.body.style.overflow = "hidden";
+        let token = this.props.token;
+        console.log("Prompt TOKEN:", token);
+        let headers = {
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+          //  'Access-Control-Allow-Origin': '*'
+        };
+        if (true) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+    }
+
 
   render() {
     return (
@@ -86,12 +102,15 @@ const mapStateToProps = state => {
     }
     return {
         errors,
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        token: state.auth.token
+
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        loadUser: () => dispatch(auth.loadUser()),
         post: (prompt, body, profile, theme, privacy) => 
             dispatch(auth.post(prompt, body, profile, theme, privacy)),
     };

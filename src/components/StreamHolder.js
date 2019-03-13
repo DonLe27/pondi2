@@ -67,6 +67,7 @@ class StreamHolder extends React.Component {
             username: '',
             avatar: '',
             color: '',
+            id: -1,
             archivePosts: [],
             streamPosts: [],
             stream: true,
@@ -144,11 +145,13 @@ class StreamHolder extends React.Component {
                         this.setState({
                             username : data.user.username,
                             avatar : data.animal,
-                            color : data.color
-                        });
+                            color : data.color,
+                            id: data.user.id, 
+                         });
                         this.userData.username = data.user.username;
                         this.userData.avatar = data.animal;
                         this.userData.color = data.color;
+                        //this.userData.prompts = 0;
                         console.log("INFO:", this.userData);
                     })
                     
@@ -158,6 +161,9 @@ class StreamHolder extends React.Component {
                 }
             })
         }, 500);
+
+        //fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+
     }
 
     componentWillUnmount() {
@@ -218,7 +224,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.archive && <Archive  streamData={this.streamData} userData={this.userData}/>}          
+            {this.state.archive && <Archive  streamData={this.streamData} userData={this.userData} />}          
                              </div>
 
                )}
@@ -230,7 +236,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.prompt && <Prompt />}
+            {this.state.prompt && <Prompt id={this.state.id}/>}
                           </div>
 
                 )}
