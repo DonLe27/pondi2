@@ -9,8 +9,20 @@
 	box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-		width: calc(70vw);
-	float: left;
+		width: calc(65vw);
+	float: right;
 	height: calc(100vh); 
 	/*border: solid 5px black;*/
+}
+
+body::-webkit-scrollbar { width: 0 !important }
+body { overflow: -moz-scrollbars-none; }
+body{ -ms-overflow-style: none; }
+
+
+@media only screen and (min-width: 1200px) {
+	.Stream {
+		width: calc(100vw - 38vh);
+		margin: 0;
+	}
 }

@@ -6,17 +6,25 @@
 
 .logout-button {
 font-family: Barlow, sans-serif;
+
     font-style: normal;
     font-weight: 100;
     line-height: normal;
 	font-size: 2vh;
     background: none;
     border: none;
-    position: absolute;
+    position: fixed;
     bottom: 3vh;
     left:  0vh;
     text-align: center;
     width: 30vw;
     cursor: pointer;
     text-decoration: none;
+}
+
+@media only screen and (min-width: 1200px)
+{
+	.logout-button {
+		width: 38vh;
+	}
 }

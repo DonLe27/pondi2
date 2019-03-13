@@ -94,7 +94,7 @@
   }
   
   button {
-    color: #b2b2b2;
+    color: #555555;
   }
   
   .Refresh {
@@ -108,3 +108,10 @@
     top: 7vh;
     right: 10vw;
   }
+
+  @media only screen and (min-width: 1200px) {
+	.Prompt {
+		width: calc(100vw - 38vh);
+		margin: 0;
+	}
+}

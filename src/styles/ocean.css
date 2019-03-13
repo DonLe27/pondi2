@@ -18,3 +18,10 @@
 
 
 }
+
+@media only screen and (min-width: 1200px) {
+	.Ocean {
+		width: calc(100vw - 38vh);
+		margin: 0;
+	}
+}

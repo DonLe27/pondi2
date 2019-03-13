@@ -6,6 +6,7 @@
 
 
 .SideBar {
+	position: fixed;
     font-family: Barlow, sans-serif;
 
     box-sizing: border-box;
@@ -77,6 +78,7 @@
     bottom: 0px;
     left: 0px;
     z-index: 0;
+    visibility: hidden;
 }
 
 .sidebar-vector2 {
@@ -84,6 +86,70 @@
     bottom: 0px;
     left: 0px;
     z-index: 0;
+    visibility: hidden;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .SideBar {
+        width: 35vw;
+        background-image:
+            linear-gradient(#F7F8F8,
+            #F7F8F8,
+            rgba(176, 202, 220, 0.9),
+            rgba(176, 202, 220, 0.9));
+        padding: none;
+    }
+
+
+    .Username {
+        margin-bottom: 35vh;
+
+        text-align: center;
+        height: 5vh;
+        width: calc(80%);
+
+        font-size: 2vh;
+        margin-left: calc(10%);
+        padding-bottom: 1vh;
+        padding-top: 1vh;
+
+        border: 2px solid rgba(255, 255, 255, .0);
+        border-radius: 50px;
+
+        background: radial-gradient(40vw at 51.82% 100%, rgba(109, 143, 167, 0.6) 0%, rgba(226, 234, 241, 0.6) 100%);
+        cursor: pointer;
+        color: white;
+    }
+
+
+    .Button {
+        font-size: 2vh;
+    }
+
+    .Button:hover {
+    	background-color: rgba(0,0,20,.05);
+
+    }
+
+    .avatar {
+        margin-top: 10vh;
+        margin-bottom: 3vh;
+        width: 14vw;
+        border-radius: 50%;
+        border: 1.5vw solid #98AABB;
+        border-style: double;
+        margin-left: 10.5vw;
+        height: 14vw;
+    }
+
+    .avatar img {
+        width: calc(100%);
+        height: calc(100%);
+        border-radius: 50%;
+    }
+
+
 }
 
 @media only screen and (min-width: 900px) {
@@ -144,12 +210,16 @@
     }
 
     .sidebar-vector1 {
-        width: 30%;
+    	        visibility: visible;
+
+        width: 30vw;
         height: 50vh;
     }
 
     .sidebar-vector2 {
-        width: 30%;
+    	        visibility: visible ;
+
+        width: 30vw;
         height: 50vh;
     }
 
@@ -158,8 +228,8 @@
 }
 
 @media only screen and (min-width: 1200px) {
-	.SideBar {
-        width: 30vw;
+    .SideBar {
+        width: 38vh;
         background: #F7F8F8;
         padding: none;
     }
@@ -199,12 +269,12 @@
     .avatar {
         margin-top: 10vh;
         margin-bottom: 3vh;
-        width: calc(40%);
+        width: 12vh;
         border-radius: 50%;
-        border: 1vw solid #98AABB;
+        border: 1.3vh solid #98AABB;
         border-style: double;
-        margin-left: calc(30%);
-        height: 12vw;
+        margin-left: 13vh;
+        height: 12vh;
     }
 
     .avatar img {
@@ -214,12 +284,12 @@
     }
 
     .sidebar-vector1 {
-        width: 30%;
+        width: 38vh;
         height: 50vh;
     }
 
     .sidebar-vector2 {
-        width: 30%;
+        width: 38vh;
         height: 50vh;
     }
 

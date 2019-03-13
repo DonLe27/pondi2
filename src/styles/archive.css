@@ -13,3 +13,10 @@
 	/*border: solid 5px black;*/
 
 }
+
+@media only screen and (min-width: 1200px) {
+	.Archive {
+		width: calc(100vw - 38vh);
+		margin: 0;
+	}
+}

@@ -4,13 +4,13 @@
 
 
 .friend {
-	width: 30%;
+	width: 90%;
 	float: left;
 	height: 5vw;
 	border-radius: .5vw;
 	text-align: center;
 
-	margin: 0 2% 3vw 0%;
+	margin: 0 0% 5% 5%;
 	padding-top: 1vw;
 
 	
@@ -30,16 +30,24 @@
 
 
 .friend-holder {
-	width: 90vw;
-	margin: 3vw 0vw 0vw 5vw;
+	width: 100%;
+	margin: 5% 0vw 0vw 0vw;
 }
 
-.friend:before {
-  content : "";
-  position: absolute;
-  left    : 0;
-  bottom  : 0;
-  height  : 1px;
-  width   : 50%;  /* or 100px */
-  border-bottom:1px solid magenta;
+
+@media only screen and (min-width: 1000px) {
+	.friend {
+		height: 5vh;
+		font-size: 3.5vh;
+		margin: 0 0% 3vh 5%;
+	padding-top: .75vw;
+
+	}
+
+
+	.friend-holder {
+	width: 100%;
+	margin: 2vh 0vw 0vw 0vw;
+	}
 }
+
