@@ -63,6 +63,35 @@ class StreamHolder extends React.Component {
                 },
             ]
         };
+
+        this.oceanData = {
+            "prompts": [{
+                    "title": "This is the first title for ocean",
+                    "content": "this is some content. This is some more contnet. This is more content",
+                    "date": "Jan 1, 1111",
+                    "avatar": "stingray"
+                },
+                {
+                    "title": "This is the 2nd title for ocean",
+                    "content": "this is some content. This is some more contnet. This is more content",
+                    "date": "Jan 1, 1111",
+                    "avatar": "stingray"
+                },
+                {
+                    "title": "This is the 3rd title for ocean",
+                    "content": "this is some content. This is some more contnet. This is more content",
+                    "date": "Jan 1, 1111",
+                    "avatar": "stingray"
+                },
+                {
+                    "title": "This is the 4th title for ocean",
+                    "content": "this is some more content. Lorem ipsum something dolor blah",
+                    "date": "Jan 1, 1111",
+                    "avatar": "stingray"
+                },
+            ]
+        };
+
         this.state = {
             username: '',
             avatar: '',
@@ -212,7 +241,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.ocean && <Ocean  streamData={this.streamData} userData={this.userData}/>}
+            {this.state.ocean && <Archive  streamData={this.streamData} userData={this.oceanData}/>}
                           </div>
 
                 )}
