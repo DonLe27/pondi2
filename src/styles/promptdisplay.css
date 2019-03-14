@@ -252,3 +252,66 @@
         border-radius: 50%;
     }
 }
+
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .prompt .prompt_title {
+        width: 80vw;
+        margin-bottom: -1vw;
+        font-family: Barlow, sans-serif;
+        font-size: 2vh;
+    }
+
+    .prompt .prompt_contents {
+        font-family: Barlow, sans-serif;
+        font-size: 1.7vh;
+        width: calc(55vw);
+        float: left;
+        color: #b2b2b2;
+        margin-bottom: 3vh;
+    }
+
+    .prompt {
+        margin: 0 5vh 0 5vh;
+    }
+
+    .prompt hr {
+        width: 100%;
+
+        margin-bottom: 3vh;
+    }
+
+    .prompt .prompt_date {
+        font-family: Barlow, sans-serif;
+        width: calc(12vw);
+        float: right;
+        margin-top: 1.8vh;
+        color: #b2b2b2;
+        font-size: 1.7vh;
+    }
+
+    .avatar-prompt {
+        margin-top: 0vh;
+        margin-bottom: 3vh;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 8vh;
+        border-radius: 50%;
+        border: 1vh solid #98AABB;
+        border-style: double;
+        height: 8vh;
+        float: left;
+        margin: 0vh 2vh 3vh 5vh;
+    }
+
+    .avatar-prompt img {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: calc(100%);
+        height: calc(100%);
+        border-radius: 50%;
+    }
+
+}

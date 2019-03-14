@@ -1,12 +1,12 @@
 /*--------------------------------------*\
-	    SIDEBAR-PAGE : medium size;
+        SIDEBAR-PAGE : medium size;
 \*--------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Barlow');
 
 
 .SideBar {
-	position: fixed;
+    position: fixed;
     font-family: Barlow, sans-serif;
 
     box-sizing: border-box;
@@ -16,6 +16,7 @@
     height: calc(100vh);
     background: #F7F8F8;
     padding: none;
+
 }
 
 
@@ -89,6 +90,83 @@
     visibility: hidden;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .SideBar {
+        width: 100vw;
+        height: 15vh;
+        background-image:
+            linear-gradient(to right,
+            #F7F8F8 0%,
+            #F7F8F8 60%,
+            rgba(176, 202, 220, 0.9) 70%,
+            rgba(176, 202, 220, 0.9) 100%);
+        min-width: 500px !important
+    }
+
+    body {
+        min-width: 480px !important;
+
+    }
+
+    .avatar {
+        margin: 0;
+        margin-top: 2.5vh;
+        margin-left: 2.5vh;
+        height: 10vh;
+        width: 10vh;
+        border: .8vw solid #98AABB;
+
+    }
+
+    .Username {
+        margin-top: -7.5vh;
+        margin-left: 15vh;
+        text-align: center;
+        height: 5vh;
+        width: 15vh;
+
+        font-size: 2vh;
+        padding-top: 1vh;
+        border: 2px solid rgba(255, 255, 255, .0);
+        border-radius: 8px;
+
+        background: radial-gradient(40vw at 51.82% 100%, rgba(109, 143, 167, 0.6) 0%, rgba(226, 234, 241, 0.6) 100%);
+        cursor: pointer;
+        color: #FFFFFF;
+    }
+
+    .Button {
+        width: 30%;
+        float: right;
+        margin-left: 70%;
+        font-size: 2vh;
+
+    }
+
+    .Button:nth-of-type(1) {
+        margin-top: -8vh;
+    }
+
+    .Button:nth-of-type(2) {
+        margin-top: -5vh;
+    }
+
+    .Button:nth-of-type(3) {
+        margin-top: -2vh;
+    }
+
+    .Button:nth-of-type(4) {
+        margin-top: -0vh;
+    }
+
+    .Button:hover {
+        background-color: rgba(0, 0, 20, .05);
+
+    }
+
+}
+
+
 @media only screen and (min-width: 600px) {
 
     .SideBar {
@@ -128,7 +206,7 @@
     }
 
     .Button:hover {
-    	background-color: rgba(0,0,20,.05);
+        background-color: rgba(0, 0, 20, .05);
 
     }
 
@@ -210,14 +288,14 @@
     }
 
     .sidebar-vector1 {
-    	        visibility: visible;
+        visibility: visible;
 
         width: 30vw;
         height: 50vh;
     }
 
     .sidebar-vector2 {
-    	        visibility: visible ;
+        visibility: visible;
 
         width: 30vw;
         height: 50vh;

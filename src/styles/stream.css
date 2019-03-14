@@ -26,3 +26,11 @@ body{ -ms-overflow-style: none; }
 		margin: 0;
 	}
 }
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .Stream {
+    	width: calc(100vw);
+		margin-top: 15vh;
+    }
+
+}

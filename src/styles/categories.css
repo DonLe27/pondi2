@@ -37,3 +37,36 @@
 	margin: 5vw;
 	margin-bottom: 15vw;
 }
+
+@media only screen and (max-width: 900px) {
+	.category-holder {
+		margin-left: 10vw;
+	}
+
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+	.avatar-prompt {
+		margin-left: 8vw;
+	}
+
+	hr {
+			margin-left: 3vw;
+	}
+
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .category {
+    	font-size: 2vh;
+    	height: 4vh;
+    }
+
+
+
+}
+
