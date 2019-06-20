@@ -13,10 +13,12 @@ class Username extends React.Component {
     super(props);
 
     this.username = this.props.username;
+    
   }
-
+  
   render() {
-    return <div className="Username">{this.username}</div>;
+    console.log("Rendering username:", this.props.username)
+    return <div className="Username">{this.props.username}</div>;
   }
 }
 
@@ -24,9 +26,10 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.userData = this.props.userData;
-    this.avatar = this.userData["avatar"];
-    this.username = this.userData["username"];
+   // this.userData = this.props.userData;
+    this.avatar = this.props.avatar;
+    this.username = this.props.username
+    console.log(this.username)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -34,7 +37,8 @@ class SideBar extends React.Component {
   }
 
   render() {
-    console.log('SIDE BAR IS RENDERING!');
+   // console.log('SIDE BAR IS RENDERING!');
+   // console.log(this.props.avatar)
     var addStream = this.props.addStream;
     var addOcean = this.props.addOcean;
     var addArchive = this.props.addArchive;
@@ -42,9 +46,9 @@ class SideBar extends React.Component {
 
     return (
       <div className="SideBar">
-        <ProfPic classType="avatar" avatar={this.avatar} />
+        <ProfPic classType="avatar" avatar={this.props.avatar} />
 
-        <Username username={this.username} />
+        <Username username={this.props.username} />
         <Button
           className="Button"
           block

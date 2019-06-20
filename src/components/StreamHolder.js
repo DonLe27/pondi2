@@ -172,14 +172,23 @@ class StreamHolder extends React.Component {
                     return res.json().then(data => {
                         console.log('DATA:', data);
                         this.setState({
+                            leftSide: <SideBar 
+                            username={data.user.username}
+                            avatar={data.animal}
+                            addStream={this.addStream.bind(this)} 
+                            addArchive={this.addArchive.bind(this)}
+                            addOcean={this.addOcean.bind(this)}
+                            addPrompt={this.addPrompt.bind(this)}
+                        />,
                             username : data.user.username,
                             avatar : data.animal,
                             color : data.color,
                             id: data.user.id, 
                          });
-                        this.userData.username = data.user.username;
-                        this.userData.avatar = data.animal;
-                        this.userData.color = data.color;
+                         console.log(this.state.leftSide)
+                     //   this.userData.username = data.user.username;
+                     //   this.userData.avatar = data.animal;
+                     //   this.userData.color = data.color;
                         //this.userData.prompts = 0;
                         console.log("INFO:", this.userData);
                     })
@@ -207,7 +216,7 @@ class StreamHolder extends React.Component {
         // }
 
         const { ...props } = this.props;
-
+        console.log(this.state.leftSide)
         return (
             //this.state.loading ? this.props.loadUser() :
             <div>
