@@ -4,6 +4,7 @@ import '../styles/transitions.css';
 import '../styles/archive.css';
 import PromptDisplay from './PromptDisplay.js'
 import Categories from './Categories.js'
+import HeaderBar from './HeaderBar.js'
 
 class Archive extends React.Component{
 	constructor(props){
@@ -37,6 +38,7 @@ class Archive extends React.Component{
 		return (
 		
 		<div className="Archive">
+		<HeaderBar header="Archive"/>
 		<Categories />
 		{this.prompts}
 		</div>

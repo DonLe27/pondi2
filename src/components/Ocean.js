@@ -4,6 +4,7 @@ import '../styles/transitions.css';
 import '../styles/ocean.css';
 import PromptDisplay from './PromptDisplay.js'
 import Categories from './Categories.js'
+import HeaderBar from './HeaderBar.js'
 
 
 class Ocean extends React.Component {
@@ -40,6 +41,7 @@ class Ocean extends React.Component {
 		return (
 		
 		<div className="Archive">
+		<HeaderBar header="Ocean"/>
 		<Categories />
 		{this.prompts}
 		</div>

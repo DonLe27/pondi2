@@ -112,7 +112,8 @@ class StreamHolder extends React.Component {
                 addPrompt={this.addPrompt.bind(this)}
             />,
             myposts: [],
-            oceonPosts: []
+            oceanPosts: [],
+            friendPosts: []
 
 
 
@@ -262,7 +263,27 @@ class StreamHolder extends React.Component {
             })
         }, 500);
         
+        /////////////////Get friend posts
+        setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/friendposts/',  {headers, method: "GET"})
+            .then(res => {
+                console.log('FRIEND RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        console.log('FRIENDPOSTS:', data);
+                        this.setState({
+                            friendPosts: data
+                        })
+                        console.log(this.state.friendPosts)
+                    })
 
+                    
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
         //fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
 
     }
@@ -303,7 +324,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.stream && <Stream  streamData={this.streamData} userData={this.userData}/>}
+            {this.state.stream && <Stream  prompts={this.state.prompts} friendPosts={this.state.friendPosts}/>}
                </div>
                 )}
         </Motion>

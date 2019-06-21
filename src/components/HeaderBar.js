@@ -7,8 +7,9 @@ class FriendsBar extends React.Component{
 	constructor(props)
 	{
 		super(props);
+		this.header = props.header
 		this.state = {
-			categories : [ "FRIENDS"],
+			categories : [ this.header],
 		}
 		
 	}
