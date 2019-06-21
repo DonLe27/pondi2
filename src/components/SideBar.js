@@ -43,7 +43,6 @@ class SideBar extends React.Component {
     var addOcean = this.props.addOcean;
     var addArchive = this.props.addArchive;
     var addPrompt = this.props.addPrompt;
-
     return (
       <div className="SideBar">
         <ProfPic classType="avatar" avatar={this.props.avatar} />
