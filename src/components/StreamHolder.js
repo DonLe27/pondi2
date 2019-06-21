@@ -112,7 +112,7 @@ class StreamHolder extends React.Component {
                 addPrompt={this.addPrompt.bind(this)}
             />,
             myposts: [],
-            oceonposts: []
+            oceonPosts: []
 
 
 
@@ -240,6 +240,27 @@ class StreamHolder extends React.Component {
                 ///////Get post information
         /////////////////Get prompts
 
+        /////////////////Get ocean posts
+        setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/oceanposts/',  {headers, method: "GET"})
+            .then(res => {
+                console.log('OCEAN RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        console.log('OCEANPOSTS:', data);
+                        this.setState({
+                            oceanPosts: data
+                        })
+                        console.log(this.state.oceanPosts)
+                    })
+
+                    
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
         
 
         //fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
@@ -293,7 +314,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.ocean && <Archive  prompts={this.state.prompts} oceonposts={this.state.oceonposts}/>}
+            {this.state.ocean && <Ocean  prompts={this.state.prompts} oceanPosts={this.state.oceanPosts}/>}
                           </div>
 
                 )}
