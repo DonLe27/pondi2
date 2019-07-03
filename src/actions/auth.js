@@ -178,29 +178,27 @@ export const updateAvatarColor = (first_name, last_name, animal, color) => {
 
 export const post = (prompt, body, profile, theme, privacy) => {
   return (dispatch, getState) => {
-  let boddy = JSON.stringify({prompt, body, profile, theme, privacy});
+ // let postBody = JSON.parse(JSON.stringify({prompt, body, profile, theme, privacy}));
 
-    let tmpbody = {
-      'prompt' : 2,
-      'body' : "This is something",
-      'profile' : 1, 
-      'theme': "THeme is here",
-      'privacy': "c"
+
+    let postBody = {
+      "prompt": prompt,
+      "body": body,
+      "profile": profile,
+      "theme": theme,
+      "privacy": privacy,
     }
-    console.log("Body: " + boddy);
-
-    console.log(boddy);
+    console.log("Body: " + JSON.stringify(postBody));
     const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-     // 'Access-Control-Allow-Origin': '*'
     };
     if (true) {
       headers["Authorization"] = `Token ${token}`;
     }
-    console.log(tmpbody);
-    return fetch(BASE_URL + "/api/auth/myposts/", {headers, tmpbody, method: "POST"})
+    console.log("Header: " + headers.Authorization)
+    return fetch(BASE_URL + "/api/auth/myposts/", {headers : headers, body : JSON.stringify(postBody), method: "POST"})
       .then(res => {
         console.log('Post Response:', res);
         if (res.status < 500) {
@@ -209,24 +207,39 @@ export const post = (prompt, body, profile, theme, privacy) => {
           })
         } else {
           console.log("Server Error!");
-          throw res;
         }
-      })
-      .then(res => {
-        if (res.status === 200) {
-          dispatch({type: 'REGISTRATION_SUCCESSFUL', data: res.data });
-          return res.data;
-        } else if (res.status === 403 || res.status === 401) {
-          dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
-          throw res.data;
-        } else {
-          dispatch({type: "REGISTRATION_FAILED", data: res.data});
-          throw res.data;
-        }
-      })
+      })  
   }
 }
+/*
+export const postUpdate = (post, body, profile, theme, privacy) => {
+  return (dispatch, getState) => {
+  let postBody = JSON.stringify({prompt, body, profile, theme, privacy});
 
+    console.log("Body: " + postBody);
+    const token = getState().auth.token;
+    let headers = {
+      "Content-Type": "application/json",
+      'Accept': 'application/json',
+    };
+    if (true) {
+      headers["Authorization"] = `Token ${token}`;
+    }
+    console.log("Header: " + headers)
+    return fetch(BASE_URL + "/api/auth/pondi/" + post + '/', {headers, postBody, method: "PATCH"})
+      .then(res => {
+        console.log('Post Response:', res);
+        if (res.status < 500) {
+          return res.json().then(data => {
+            return {status: res.status, data};
+          })
+        } else {
+          console.log("Server Error!");
+        }
+      })  
+  }
+}
+*/
 export const logout = () => {
   return (dispatch, getState) => {
     let headers = {"Content-Type": "application/json"};

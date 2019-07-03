@@ -359,7 +359,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.prompt && <Prompt id={this.state.id}/>}
+            {this.state.prompt && <Prompt prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id}/>}
                           </div>
 
                 )}

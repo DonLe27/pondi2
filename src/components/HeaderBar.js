@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/friends.css';
 
 
-class FriendsBar extends React.Component{
+class HeaderBar extends React.Component{
 	constructor(props)
 	{
 		super(props);
@@ -25,4 +25,4 @@ class FriendsBar extends React.Component{
 	}
 }
 
-export default FriendsBar
+export default HeaderBar

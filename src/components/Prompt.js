@@ -1,3 +1,7 @@
+//This page will render the chosen prompt and allow it to be edited
+//Need to pass down prompt ID 
+//Make a new menu that does that passing down
+//for now put in random ID
 import React from "react";
 import { Link } from "react-router-dom";
 import { FormControl, InputGroup, Button } from "react-bootstrap";
@@ -9,10 +13,16 @@ import { auth } from "../actions";
 class Prompt extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.prompts)
     this.state = {
       imagefile: null,
-      text: "",
-      prompt: "This is where the prompt goes"
+      body: "",
+      theme: "love",
+      privacy: "p",
+      prompt: this.props.prompts[this.props.prompts.length-1].question,
+      promptId: this.props.prompts.length, //Initialize to last prompt,
+      myposts: this.props.myposts,
+      postId: null
     };
   }
 
@@ -21,28 +31,67 @@ class Prompt extends React.Component {
   };
 
   textInputHandler = event => {
-    this.setState({ text: event.target.value });
+    this.setState({ body: event.target.value });
+    console.log(this.state.body)
   };
 
   uploadHandler = () => {
-    console.log(this.state.text);
-    console.log(this.props.post(1, this.state.text, this.props.id, "this is a theme", "o"));
+    var i;
+    var postId;
+    let exist = false
+    for (i = 0; i < this.props.myposts.length; i++)
+    {
+      if (this.props.myposts[i].prompt == this.state.promptId)
+      {
+        exist = true;
+        postId = this.props.myposts[i].id;
+        console.log(postId);
+        break;
+      }
+    }
+    if (false)
+    {
+      console.log(this.state.body);
+      console.log(this.props.postUpdate(postId, this.state.body, this.props.id, this.state.theme, this.state.privacy));
+    }
+    else
+    {
+    console.log(this.state.body);
+    console.log(this.props.post(this.state.promptId, this.state.body, this.props.id, this.state.theme, this.state.privacy));
+    
+    }
   };
 
+
+
   componentDidMount() {
-        document.body.style.margin = "0";
-        //document.body.style.overflow = "hidden";
-        let token = this.props.token;
-        console.log("Prompt TOKEN:", token);
-        let headers = {
-            "Content-Type": "application/json",
-            'Accept': 'application/json',
-          //  'Access-Control-Allow-Origin': '*'
-        };
-        if (true) {
-            headers["Authorization"] = `Token ${token}`;
-        }
+    var exist = false;
+    let postIndex = -1;
+    var i;
+    for (i = 0; i < this.state.myposts.length; i++) 
+    {
+      if (this.state.myposts[i].prompt == this.state.promptId)
+      //If the user already had a post written for that prompt
+      {
+        console.log("Exists")
+        postIndex = i
+        exist = true;
+        break;
+      }
     }
+    if (exist)
+    {
+      this.setState({
+        body: this.state.myposts[postIndex].body,
+        theme: this.state.myposts[postIndex].theme,
+        privacy: this.state.myposts[postIndex].privacy,
+        postId: this.state.myposts[postIndex].id
+      });
+    }
+  }
+  componentDidUpdate(){
+    console.log(this.props.myposts)
+  }
 
 
   render() {
@@ -62,7 +111,7 @@ class Prompt extends React.Component {
         <div className="Container">
           <textarea
             type="text"
-            value={this.state.text}
+            value={this.state.body}
             onChange={this.textInputHandler}
             placeholder="Type your response here"
           />
@@ -113,6 +162,8 @@ const mapDispatchToProps = dispatch => {
         loadUser: () => dispatch(auth.loadUser()),
         post: (prompt, body, profile, theme, privacy) => 
             dispatch(auth.post(prompt, body, profile, theme, privacy)),
+        postUpdate: (postId, body, profile, theme, privacy) => 
+            dispatch(auth.postUpdate(postId, body, profile, theme, privacy)),
     };
 }
 
