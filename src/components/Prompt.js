@@ -46,18 +46,19 @@ class Prompt extends React.Component {
         exist = true;
         postId = this.props.myposts[i].id;
         console.log(postId);
-        break;
       }
     }
-    if (false)
+    if (exist)
     {
       console.log(this.state.body);
       console.log(this.props.postUpdate(postId, this.state.body, this.props.id, this.state.theme, this.state.privacy));
+      this.props.getMyPosts();
     }
     else
     {
     console.log(this.state.body);
     console.log(this.props.post(this.state.promptId, this.state.body, this.props.id, this.state.theme, this.state.privacy));
+    this.props.getMyPosts();
     
     }
   };
@@ -72,11 +73,10 @@ class Prompt extends React.Component {
     {
       if (this.state.myposts[i].prompt == this.state.promptId)
       //If the user already had a post written for that prompt
-      {
+      {//Don't break and get the last one
         console.log("Exists")
         postIndex = i
         exist = true;
-        break;
       }
     }
     if (exist)
@@ -89,9 +89,11 @@ class Prompt extends React.Component {
       });
     }
   }
+  /*
   componentDidUpdate(){
-    console.log(this.props.myposts)
+    //console.log(this.props.myposts)
   }
+  */
 
 
   render() {

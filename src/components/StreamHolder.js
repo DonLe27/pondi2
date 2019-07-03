@@ -146,6 +146,43 @@ class StreamHolder extends React.Component {
         
     }
 
+    getMyPosts(){
+        document.body.style.margin = "0";
+        //document.body.style.overflow = "hidden";
+        let token = this.props.token;
+        console.log("TOKEN:", token);
+        let headers = {
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+          //  'Access-Control-Allow-Origin': '*'
+        };
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+                ///////Get post information
+                setTimeout(() => {
+                    fetch('https://pondi.herokuapp.com/api/auth/myposts/',  {headers, method: "GET"})
+                    .then(res => {
+                        console.log('PROFILE_RESPONSE:', res);
+                        if (res.status < 500) {
+                            return res.json().then(data => {
+                                console.log('POSTS:', data);
+                                this.setState({
+                                    myposts: data
+                                })
+        
+                            })
+        
+                            
+                        } else {
+                            console.log("Server Error!");
+                            throw res;
+                        }
+                    })
+                }, 500);
+
+    }
+
     componentDidMount() {
         document.body.style.margin = "0";
         //document.body.style.overflow = "hidden";
@@ -174,11 +211,13 @@ class StreamHolder extends React.Component {
                             addArchive={this.addArchive.bind(this)}
                             addOcean={this.addOcean.bind(this)}
                             addPrompt={this.addPrompt.bind(this)}
+
                         />,
                             username : data.user.username,
                             avatar : data.animal,
                             color : data.color,
                             id: data.user.id, 
+                            
                             
                          });
                          console.log(this.state.leftSide)
@@ -359,7 +398,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.prompt && <Prompt prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id}/>}
+            {this.state.prompt && <Prompt prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id} getMyPosts={this.getMyPosts.bind(this)}/>}
                           </div>
 
                 )}

@@ -211,35 +211,39 @@ export const post = (prompt, body, profile, theme, privacy) => {
       })  
   }
 }
-/*
+/////////////////////////POST UPDATE///////////////////////////
 export const postUpdate = (post, body, profile, theme, privacy) => {
   return (dispatch, getState) => {
-  let postBody = JSON.stringify({prompt, body, profile, theme, privacy});
-
-    console.log("Body: " + postBody);
-    const token = getState().auth.token;
-    let headers = {
-      "Content-Type": "application/json",
-      'Accept': 'application/json',
-    };
-    if (true) {
-      headers["Authorization"] = `Token ${token}`;
-    }
-    console.log("Header: " + headers)
-    return fetch(BASE_URL + "/api/auth/pondi/" + post + '/', {headers, postBody, method: "PATCH"})
-      .then(res => {
-        console.log('Post Response:', res);
-        if (res.status < 500) {
-          return res.json().then(data => {
-            return {status: res.status, data};
-          })
-        } else {
-          console.log("Server Error!");
-        }
-      })  
-  }
+       let postBody = {
+         "body": body,
+         "profile": profile,
+         "theme": theme,
+         "privacy": privacy,
+       }
+       console.log("Body: " + JSON.stringify(postBody));
+       const token = getState().auth.token;
+       let headers = {
+         "Content-Type": "application/json",
+         'Accept': 'application/json',
+       };
+       if (true) {
+         headers["Authorization"] = `Token ${token}`;
+       }
+       console.log("Header: " + headers.Authorization)
+       return fetch(BASE_URL + "/api/pondi/" + post + "/", {headers : headers, body : JSON.stringify(postBody), method: "PATCH"})
+         .then(res => {
+           console.log('Patch Response:', res);
+           if (res.status < 500) {
+             return res.json().then(data => {
+               return {status: res.status, data};
+             })
+           } else {
+             console.log("Server Error!");
+           }
+         })  
+     }
 }
-*/
+
 export const logout = () => {
   return (dispatch, getState) => {
     let headers = {"Content-Type": "application/json"};
