@@ -49,6 +49,15 @@
     bottom: 2vh;
     left: 1vw;
   }
+  .List {
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    font-family: Barlow;
+    font-size: 2vh;
+    top: 2vh;
+    left: 23vw;
+  }
   
   .Visibility {
     position: absolute;

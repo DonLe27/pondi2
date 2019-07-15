@@ -13,7 +13,7 @@ import { auth } from "../actions";
 class Prompt extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.prompts)
+
     this.state = {
       imagefile: null,
       body: "",
@@ -25,7 +25,40 @@ class Prompt extends React.Component {
       postId: null
     };
   }
-
+  promptChangeHandler = (newPrompt) => {
+    console.log(newPrompt);
+    var exist = false;
+    let postIndex = -1;
+    var i;
+    for (i = 0; i < this.state.myposts.length; i++) 
+    {
+      if (this.state.myposts[i].prompt == newPrompt)
+      //If the user already had a post written for that prompt
+      {//Don't break and get the last one
+        console.log("Exists")
+        postIndex = i
+        exist = true;
+      }
+    }
+    if (exist)
+    {
+      this.setState({
+        body: this.state.myposts[postIndex].body,
+        theme: this.state.myposts[postIndex].theme,
+        privacy: this.state.myposts[postIndex].privacy,
+        postId: this.state.myposts[postIndex].id,
+      });
+    }
+    else
+    {
+      this.setState({
+        body: "",
+        theme: "",
+        privacy: "p",
+        promptId: newPrompt,
+      });
+    }
+  }
   fileChangedHandler = event => {
     this.setState({ imagefile: event.target.files[0] });
   };
@@ -64,7 +97,6 @@ class Prompt extends React.Component {
   };
 
 
-
   componentDidMount() {
     var exist = false;
     let postIndex = -1;
@@ -85,10 +117,11 @@ class Prompt extends React.Component {
         body: this.state.myposts[postIndex].body,
         theme: this.state.myposts[postIndex].theme,
         privacy: this.state.myposts[postIndex].privacy,
-        postId: this.state.myposts[postIndex].id
+        postId: this.state.myposts[postIndex].id,
       });
     }
   }
+
   /*
   componentDidUpdate(){
     //console.log(this.props.myposts)
@@ -97,9 +130,19 @@ class Prompt extends React.Component {
 
 
   render() {
+    //Make buttons for changing prompts
+    const promptList = [];
+    const buttonList = [];
+    var i;
+    for(i = 0; i<this.props.prompts.length; i++)
+    {
+      promptList.push(<li  key={i}>{this.props.prompts[i].question}</li>)
+      buttonList.push(<Button className="List" onClick={(i)=> {this.promptChangeHandler(i+1)}}>{this.props.prompts[i].question}</Button>)
+      //console.log(this.props.prompts[i].question)
+    }
     return (
       <div>
-        <div className="Prompt">{this.state.prompt}</div>
+        <div className="Prompt">{this.props.prompts[this.state.promptId-1].question}</div>
         <input
           type="image"
           className="Refresh"
@@ -132,9 +175,9 @@ class Prompt extends React.Component {
             className="Visibility"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/768px-Globe_icon.svg.png"
           />
-          <Button className="Categories">#CATEGORIES</Button>
+          <Button className="Categories" onClick={()=> {this.promptChangeHandler(2)}}>Change</Button> 
         </div>
-
+     
         <Button className="Post" onClick={this.uploadHandler}>
           Post
         </Button>
