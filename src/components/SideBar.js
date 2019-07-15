@@ -41,7 +41,7 @@ class SideBar extends React.Component {
    // console.log(this.props.avatar)
     var addStream = this.props.addStream;
     var addOcean = this.props.addOcean;
-    var addArchive = this.props.addArchive;
+    var addarchive = this.props.addarchive;
     var addPrompt = this.props.addPrompt;
     return (
       <div className="SideBar">
@@ -52,8 +52,8 @@ class SideBar extends React.Component {
           className="Button"
           block
           bsSize="large"
-          addStream={this.props.addStream}
-          onClick={i => addStream("somevar")}
+       //   addStream={this.props.addStream}
+          onClick={i => this.props.addStream("somevar")}
         >
           stream
         </Button>
@@ -61,8 +61,8 @@ class SideBar extends React.Component {
           className="Button"
           block
           bsSize="large"
-          addOcean={this.props.addOcean}
-          onClick={i => addOcean("somevar")}
+         // addOcean={this.props.addOcean}
+          onClick={i => this.props.addOcean("somevar")}
         >
           ocean
         </Button>
@@ -70,8 +70,8 @@ class SideBar extends React.Component {
           className="Button"
           block
           bsSize="large"
-          addArchive={this.props.addArchive}
-          onClick={i => addArchive("somevar")}
+         // addarchive={this.props.addarchive}
+          onClick={i => this.props.addarchive("somevar")}
         >
           archive
         </Button>
@@ -79,8 +79,8 @@ class SideBar extends React.Component {
           className="Button"
           block
           bsSize="large"
-          addArchive={this.props.addPrompt}
-          onClick={i => addPrompt("somevar")}
+        //  addarchive={this.props.addPrompt}
+          onClick={i => this.props.addPrompt("somevar")}
         >
           prompt
         </Button>

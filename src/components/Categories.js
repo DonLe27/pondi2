@@ -17,7 +17,7 @@ class Categories extends React.Component{
 		return (
 		<div className="category-holder">
 		{		
-			this.state.categories.map((item,i) =><div className="category">{item}</div>)	
+			this.state.categories.map((item,i) =><div key={i} className="category">{item}</div>)	
 		}	
 		</div>	
 );

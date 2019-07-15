@@ -18,7 +18,7 @@ class HeaderBar extends React.Component{
 		return (
 		<div className="friend-holder">
 		{		
-			this.state.categories.map((item,i) =><div className="friend">{item}</div>)	
+			this.state.categories.map((item,i) =><div key={i} className="friend">{item}</div>)	
 		}	
 		</div>	
 );

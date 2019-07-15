@@ -10,12 +10,11 @@ class Archive extends React.Component{
 	constructor(props){
 		super(props);
 		// parse data from parent to get prompts
-		console.log(this.props.myposts)
+
 		this.avatar=this.props.avatar;
 		this.prompts = [];
 		this.allprompts = this.props.prompts
-		console.log(this.allprompts)
-		console.log(this.allprompts[0])
+
 		for (var i = 0; i < this.props.myposts.length; i++){
 			var p = this.props.myposts[i];
 			var question;
@@ -26,10 +25,34 @@ class Archive extends React.Component{
 				}
 			}
 			this.prompts.push(
-					<PromptDisplay title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
+					<PromptDisplay key={i} title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
 					);
 		}
 		console.log("Rendering archive")
+	}
+	componentWillReceiveProps(newProps)
+	{
+			if (newProps != this.props)
+			{
+				this.avatar=newProps.avatar;
+				this.prompts = [];
+				this.allprompts = newProps.prompts
+
+				for (var i = 0; i < newProps.myposts.length; i++){
+					var p = newProps.myposts[i];
+					var question;
+					for (var j = 0; j < newProps.prompts.length; j++){
+
+						if(this.allprompts[j].id == newProps.myposts[i].prompt){
+							question = newProps.prompts[j].question
+						}
+					}
+					this.prompts.push(
+							<PromptDisplay key={i} title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
+							);
+			}
+			console.log("Rendering archive again")
+		}
 	}
 
 	

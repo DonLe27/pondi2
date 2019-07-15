@@ -99,15 +99,15 @@ class StreamHolder extends React.Component {
             id: -1,
             archivePosts: [],
             streamPosts: [],
-            stream: true,
-            archive: false,
+            stream: false,
+            archive: true,
             ocean: false,
             prompt: false,
             prompts: [],
             leftSide: <SideBar 
                 userData={this.userData}
                 addStream={this.addStream.bind(this)} 
-                addArchive={this.addArchive.bind(this)}
+                addarchive={this.addarchive.bind(this)}
                 addOcean={this.addOcean.bind(this)}
                 addPrompt={this.addPrompt.bind(this)}
             />,
@@ -121,14 +121,13 @@ class StreamHolder extends React.Component {
         this.handleAdd = this.handleAdd.bind(this);
         this.addStream = this.addStream.bind(this);
         this.addOcean = this.addOcean.bind(this);
-        this.addArchive = this.addArchive.bind(this);
+        this.addarchive = this.addarchive.bind(this);
     }
 
     handleAdd(i) {}
 
     addStream(i) {
         this.setState({ archive: false, stream: true, ocean: false, prompt: false });
-        console.log("Called addStream")
     }
 
     addOcean(i) {
@@ -136,9 +135,9 @@ class StreamHolder extends React.Component {
 
     }
 
-    addArchive(i) {
+    addarchive(i) {
         this.setState({ archive: true, stream: false, ocean: false, prompt: false });
-        console.log(this.addArchive)
+        console.log(this.addarchive)
     }
 
     addPrompt(i) {
@@ -187,7 +186,7 @@ class StreamHolder extends React.Component {
         document.body.style.margin = "0";
         //document.body.style.overflow = "hidden";
         let token = this.props.token;
-        console.log("TOKEN:", token);
+      //  console.log("TOKEN:", token);
         let headers = {
             "Content-Type": "application/json",
             'Accept': 'application/json',
@@ -199,35 +198,30 @@ class StreamHolder extends React.Component {
         setTimeout(() => {
             fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
             .then(res => {
-                console.log('PROFILE_RESPONSE:', res);
+             //   console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
                     return res.json().then(data => {
-                        console.log('DATA:', data);
+                 //       console.log('DATA:', data);
                         this.setState({
                             leftSide: <SideBar 
                             username={data.user.username}
                             avatar={data.animal}
                             addStream={this.addStream.bind(this)} 
-                            addArchive={this.addArchive.bind(this)}
+                            addarchive={this.addarchive.bind(this)}
                             addOcean={this.addOcean.bind(this)}
                             addPrompt={this.addPrompt.bind(this)}
 
                         />,
                             username : data.user.username,
-                            avatar : data.animal,
+                            avatar : "porcupine",
                             color : data.color,
                             id: data.user.id, 
                             
                             
                          });
-                         console.log(this.state.leftSide)
-                     //   this.userData.username = data.user.username;
-                     //   this.userData.avatar = data.animal;
-                     //   this.userData.color = data.color;
-                        //this.userData.prompts = 0;
-                        console.log("INFO:", this.userData);
+                         console.log("AVATAR: " + this.state.avatar) 
                     })
-                    
+
                 } else {
                     console.log("Server Error!");
                     throw res;
@@ -242,7 +236,7 @@ class StreamHolder extends React.Component {
                 console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
                     return res.json().then(data => {
-                        console.log('POSTS:', data);
+                        console.log('MY POSTS:', data);
                         this.setState({
                             myposts: data
                         })
@@ -284,14 +278,14 @@ class StreamHolder extends React.Component {
         setTimeout(() => {
             fetch('https://pondi.herokuapp.com/api/auth/oceanposts/',  {headers, method: "GET"})
             .then(res => {
-                console.log('OCEAN RESPONSE:', res);
+              
                 if (res.status < 500) {
                     return res.json().then(data => {
-                        console.log('OCEANPOSTS:', data);
+                     
                         this.setState({
                             oceanPosts: data
                         })
-                        console.log(this.state.oceanPosts)
+                      
                     })
 
                     
@@ -306,14 +300,14 @@ class StreamHolder extends React.Component {
         setTimeout(() => {
             fetch('https://pondi.herokuapp.com/api/auth/friendposts/',  {headers, method: "GET"})
             .then(res => {
-                console.log('FRIEND RESPONSE:', res);
+            //    console.log('FRIEND RESPONSE:', res);
                 if (res.status < 500) {
                     return res.json().then(data => {
-                        console.log('FRIENDPOSTS:', data);
+                 //       console.log('FRIENDPOSTS:', data);
                         this.setState({
                             friendPosts: data
                         })
-                        console.log(this.state.friendPosts)
+                   //     console.log(this.state.friendPosts)
                     })
 
                     
@@ -339,8 +333,7 @@ class StreamHolder extends React.Component {
         // }
 
         const { ...props } = this.props;
-        console.log(this.state.archive)
-        console.log(this.state.stream)
+
         return (
             //this.state.loading ? this.props.loadUser() :
             <div>
@@ -363,7 +356,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.stream && <Stream  prompts={this.state.prompts} friendPosts={this.state.friendPosts}/>}
+            {this.state.stream && <Stream  key={1} prompts={this.state.prompts} friendPosts={this.state.friendPosts}/>}
                </div>
                 )}
         </Motion>
@@ -374,7 +367,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.ocean && <Ocean  prompts={this.state.prompts} oceanPosts={this.state.oceanPosts}/>}
+            {this.state.ocean && <Ocean key={2} prompts={this.state.prompts} oceanPosts={this.state.oceanPosts}/>}
                           </div>
 
                 )}
@@ -386,7 +379,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.archive && <Archive  prompts={this.state.prompts} myposts={this.state.myposts} avatar={this.state.avatar} />}          
+            {this.state.archive &&  <Archive key={3} prompts={this.state.prompts} myposts={this.state.myposts} avatar={this.state.avatar} />}          
                              </div>
 
                )}
@@ -398,7 +391,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.prompt && <Prompt prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id} getMyPosts={this.getMyPosts.bind(this)}/>}
+            {this.state.prompt && <Prompt key={4} prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id} getMyPosts={this.getMyPosts.bind(this)}/>}
                           </div>
 
                 )}

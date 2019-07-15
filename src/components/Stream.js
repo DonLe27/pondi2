@@ -28,7 +28,7 @@ class Stream extends React.Component{
 				}
 			}
 			this.prompts.push(
-					<PromptDisplay title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
+					<PromptDisplay key={i} title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
 					);
 		}
 		console.log("Rendering friends")

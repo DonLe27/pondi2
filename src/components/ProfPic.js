@@ -13,7 +13,7 @@ class ProfPic extends React.Component {
     render() {
         return (
             <div className={this.classType} >
-		    <img src={process.env.PUBLIC_URL + this.avatar + ".png"} style={{'background-color' : this.pallette}}/>
+		    <img src={process.env.PUBLIC_URL + this.avatar + ".png"} style={{'backgroundColor' : this.pallette}}/>
         </div>
         );
     }
