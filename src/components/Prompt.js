@@ -4,12 +4,11 @@
 //for now put in random ID
 import React from "react";
 import { Link } from "react-router-dom";
-import { FormControl, InputGroup, Button } from "react-bootstrap";
+import { FormControl, InputGroup,Radio, Button , ButtonToolbar} from "react-bootstrap";
 import "../styles/prompt.css";
 
 import { connect } from "react-redux";
 import { auth } from "../actions";
-
 class Prompt extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +23,15 @@ class Prompt extends React.Component {
       myposts: this.props.myposts,
     };
   }
+  componentWillReceiveProps(newProps)
+	{
+			if (newProps.myposts != this.props.myposts || newProps.prompts != this.props.prompts){
+				this.setState({
+          myposts: newProps.myposts
+        })
+        console.log("Rendering archive again")
+      }
+	}
   promptChangeHandler = (newPrompt) => {
     console.log(newPrompt);
     var exist = false;
@@ -39,6 +47,7 @@ class Prompt extends React.Component {
         exist = true;
       }
     }
+    //LOOKS LIKE THE UPDATES DONT UPDATE THE STATE--SEE HOW ARCHIVE STATE GETS UPDATED
     if (exist)
     {
       this.setState({
@@ -96,6 +105,28 @@ class Prompt extends React.Component {
     
     }
   };
+  privacyHandler = (privacy) => {
+    if (this.state.privacy == "p"){
+      this.setState({
+        privacy: "c"
+      })
+    }
+    if (this.state.privacy == "c"){
+      this.setState({
+        privacy: "f"
+      })
+    }
+    if (this.state.privacy == "f"){
+      this.setState({
+        privacy: "o"
+      })
+    }
+    if (this.state.privacy == "o"){
+      this.setState({
+        privacy: "p"
+      })
+    }
+  }
 
 
   componentDidMount() {
@@ -177,6 +208,12 @@ class Prompt extends React.Component {
             className="Visibility"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/768px-Globe_icon.svg.png"
           />
+        <div>
+        {this.state.privacy == "p" && <Button onClick={()=> {this.privacyHandler()}}>Private</Button>}
+        {this.state.privacy == "c" && <Button onClick={()=> {this.privacyHandler()}}>Close Friends</Button>}
+        {this.state.privacy == "f" && <Button onClick={()=> {this.privacyHandler()}}>Friends</Button>}
+        {this.state.privacy == "o" && <Button onClick={()=> {this.privacyHandler()}}>Ocean</Button>}
+        </div>
           <div>
             {buttonList}
           </div>

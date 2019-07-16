@@ -39,6 +39,17 @@
     font-size: 3vh;
     font-family: Barlow;
   }
+  .Privacy {
+    cursor: pointer;
+    right: 5vw;
+    top: 10vh;
+    border: 2px solid #d7e2ea;
+    border-radius: 50px;
+    width: 15vw;
+    height: 4vh;
+    font-size: 1vh;
+    font-family: Barlow;
+  }
   
   .Categories {
     position: absolute;
