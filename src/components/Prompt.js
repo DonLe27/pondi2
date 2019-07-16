@@ -22,7 +22,6 @@ class Prompt extends React.Component {
       prompt: this.props.prompts[this.props.prompts.length-1].question,
       promptId: this.props.prompts.length, //Initialize to last prompt,
       myposts: this.props.myposts,
-      postId: null
     };
   }
   promptChangeHandler = (newPrompt) => {
@@ -46,7 +45,8 @@ class Prompt extends React.Component {
         body: this.state.myposts[postIndex].body,
         theme: this.state.myposts[postIndex].theme,
         privacy: this.state.myposts[postIndex].privacy,
-        postId: this.state.myposts[postIndex].id,
+        prompt: this.props.prompts[newPrompt-1].question,
+        promptId: newPrompt,
       });
     }
     else
@@ -56,6 +56,7 @@ class Prompt extends React.Component {
         theme: "",
         privacy: "p",
         promptId: newPrompt,
+        prompt: this.props.prompts[newPrompt-1].question
       });
     }
   }
@@ -118,6 +119,7 @@ class Prompt extends React.Component {
         theme: this.state.myposts[postIndex].theme,
         privacy: this.state.myposts[postIndex].privacy,
         postId: this.state.myposts[postIndex].id,
+        prompt: this.props.prompts[this.state.promptId-1].question
       });
     }
   }
@@ -131,18 +133,19 @@ class Prompt extends React.Component {
 
   render() {
     //Make buttons for changing prompts
-    const promptList = [];
     const buttonList = [];
     var i;
     for(i = 0; i<this.props.prompts.length; i++)
     {
-      promptList.push(<li  key={i}>{this.props.prompts[i].question}</li>)
-      buttonList.push(<Button className="List" onClick={(i)=> {this.promptChangeHandler(i+1)}}>{this.props.prompts[i].question}</Button>)
-      //console.log(this.props.prompts[i].question)
+
+      let item = this.props.prompts[i].question
+      let index = i + 1
+      buttonList.push(<Button onClick={(i)=> {this.promptChangeHandler(index)}}key={i} className="category">{item}</Button>)
+
     }
     return (
       <div>
-        <div className="Prompt">{this.props.prompts[this.state.promptId-1].question}</div>
+        <div className="Prompt">{this.state.prompt}</div>
         <input
           type="image"
           className="Refresh"
@@ -175,9 +178,11 @@ class Prompt extends React.Component {
             className="Visibility"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/768px-Globe_icon.svg.png"
           />
-          <Button className="Categories" onClick={()=> {this.promptChangeHandler(2)}}>Change</Button> 
+          <div>
+            {buttonList}
+          </div>
         </div>
-     
+        
         <Button className="Post" onClick={this.uploadHandler}>
           Post
         </Button>
