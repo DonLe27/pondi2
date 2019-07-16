@@ -20,7 +20,7 @@ class Prompt extends React.Component {
       theme: "love",
       privacy: "p",
       prompt: this.props.prompts[this.props.prompts.length-1].question,
-      promptId: this.props.prompts.length, //Initialize to last prompt,
+      promptId: this.props.prompts.length,
       myposts: this.props.myposts,
     };
   }
@@ -118,7 +118,6 @@ class Prompt extends React.Component {
         body: this.state.myposts[postIndex].body,
         theme: this.state.myposts[postIndex].theme,
         privacy: this.state.myposts[postIndex].privacy,
-        postId: this.state.myposts[postIndex].id,
         prompt: this.props.prompts[this.state.promptId-1].question
       });
     }

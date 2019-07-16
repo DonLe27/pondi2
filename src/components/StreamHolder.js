@@ -213,15 +213,15 @@ class StreamHolder extends React.Component {
 
                         />,
                             username : data.user.username,
-                            avatar : "porcupine",
+                            avatar : data.animal,
                             color : data.color,
                             id: data.user.id, 
                             
                             
                          });
-                         console.log("AVATAR: " + this.state.avatar) 
-                    })
 
+                    })
+                    
                 } else {
                     console.log("Server Error!");
                     throw res;

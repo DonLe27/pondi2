@@ -32,7 +32,7 @@ class Archive extends React.Component{
 	}
 	componentWillReceiveProps(newProps)
 	{
-			if (newProps != this.props)
+			if (newProps.myposts != this.props.myposts || newProps.prompts != this.props.prompts)
 			{
 				this.avatar=newProps.avatar;
 				this.prompts = [];
@@ -45,8 +45,10 @@ class Archive extends React.Component{
 
 						if(this.allprompts[j].id == newProps.myposts[i].prompt){
 							question = newProps.prompts[j].question
+							break;
 						}
 					}
+					
 					this.prompts.push(
 							<PromptDisplay key={i} title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
 							);

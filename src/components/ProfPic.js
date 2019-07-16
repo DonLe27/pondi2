@@ -6,7 +6,7 @@ import pic from '../Images/squirrel.png'
 
 class ProfPic extends React.Component {
     constructor(props) {
-        console.log(pic)
+       // console.log(pic)
         super(props);
         this.avatar = this.props.avatar;
         this.pallette = "#aaccaa";
