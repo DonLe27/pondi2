@@ -1,0 +1,31 @@
+/*--------------------------------------*\
+	    ARCHIVE-PAGE : medium size;
+\*--------------------------------------*/
+
+
+.Friendpage {
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	width: calc(65vw);
+	margin-right: 5vw;
+	float: right;
+	height: calc(100vh);
+	/*border: solid 5px black;*/
+
+}
+
+@media only screen and (min-width: 1200px) {
+	.Friendpage {
+		width: calc(100vw - 38vh);
+		margin: 0;
+	}
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+    .Friendpage {
+    	width: calc(100vw);
+		margin-top: 15vh;
+    }
+
+}

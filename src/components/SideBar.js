@@ -83,6 +83,15 @@ class SideBar extends React.Component {
         >
           prompt
         </Button>
+        <Button
+          className="Button"
+          block
+          bsSize="large"
+        //  addarchive={this.props.addPrompt}
+          onClick={i => this.props.addFriends("somevar")}
+        >
+          friends
+        </Button>
 
         <img className="sidebar-vector1" src={vec1} alt="vector1" />
         <img className="sidebar-vector2" src={vec2} alt="vector1" />

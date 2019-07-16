@@ -220,7 +220,7 @@ class Prompt extends React.Component {
         </div>
         
         <Button className="Post" onClick={this.uploadHandler}>
-          Post
+          Save
         </Button>
       </div>
     );

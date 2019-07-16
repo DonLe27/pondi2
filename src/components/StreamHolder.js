@@ -14,6 +14,7 @@ import Ocean from './Ocean.js';
 import Archive from './Archive.js';
 import SideBar from './SideBar.js';
 import Prompt from './Prompt.js';
+import FriendPage from './Friends.js'
 
 class StreamHolder extends React.Component {
     constructor(props) {
@@ -101,6 +102,7 @@ class StreamHolder extends React.Component {
             streamPosts: [],
             stream: false,
             archive: true,
+            friend:false,
             ocean: false,
             prompt: false,
             prompts: [],
@@ -110,6 +112,7 @@ class StreamHolder extends React.Component {
                 addarchive={this.addarchive.bind(this)}
                 addOcean={this.addOcean.bind(this)}
                 addPrompt={this.addPrompt.bind(this)}
+                addFriend={this.addFriends.bind(this)}
             />,
             myposts: [],
             oceanPosts: [],
@@ -122,26 +125,29 @@ class StreamHolder extends React.Component {
         this.addStream = this.addStream.bind(this);
         this.addOcean = this.addOcean.bind(this);
         this.addarchive = this.addarchive.bind(this);
+        this.addFriends = this.addFriends.bind(this);
     }
 
     handleAdd(i) {}
-
+    addFriends(i) {
+        this.setState({ archive: false, stream: false, ocean: false, prompt: false, friend: true });
+    }
     addStream(i) {
-        this.setState({ archive: false, stream: true, ocean: false, prompt: false });
+        this.setState({ archive: false, stream: true, ocean: false, prompt: false, friend: false });
     }
 
     addOcean(i) {
-        this.setState({ archive: false, stream: false, ocean: true, prompt: false });
+        this.setState({ archive: false, stream: false, ocean: true, prompt: false, friend: false});
 
     }
 
     addarchive(i) {
-        this.setState({ archive: true, stream: false, ocean: false, prompt: false });
+        this.setState({ archive: true, stream: false, ocean: false, prompt: false,friend: false });
         console.log(this.addarchive)
     }
 
     addPrompt(i) {
-        this.setState({ archive: false, stream: false, ocean: false, prompt: true });
+        this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false });
         
     }
 
@@ -210,7 +216,7 @@ class StreamHolder extends React.Component {
                             addarchive={this.addarchive.bind(this)}
                             addOcean={this.addOcean.bind(this)}
                             addPrompt={this.addPrompt.bind(this)}
-
+                            addFriends={this.addFriends.bind(this)}
                         />,
                             username : data.user.username,
                             avatar : data.animal,
@@ -303,7 +309,7 @@ class StreamHolder extends React.Component {
             //    console.log('FRIEND RESPONSE:', res);
                 if (res.status < 500) {
                     return res.json().then(data => {
-                 //       console.log('FRIENDPOSTS:', data);
+                        console.log('FRIENDPOSTS:', data);
                         this.setState({
                             friendPosts: data
                         })
@@ -333,7 +339,7 @@ class StreamHolder extends React.Component {
         // }
 
         const { ...props } = this.props;
-
+        console.log("FRIEND PAGE STATUS " + this.state.friend)
         return (
             //this.state.loading ? this.props.loadUser() :
             <div>
@@ -392,6 +398,18 @@ class StreamHolder extends React.Component {
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
             {this.state.prompt && <Prompt key={4} prompts={this.state.prompts} myposts={this.state.myposts} id={this.state.id} getMyPosts={this.getMyPosts.bind(this)}/>}
+                          </div>
+
+                )}
+        </Motion>
+        
+        <Motion 
+            defaultStyle={{opacity: 0}}
+            style={{opacity: spring(this.state.friend ? 1 : 0, {stiffness: 50, damping: 20})}}
+        >
+            {(style) => (
+                <div  style={{opacity: style.opacity}}>
+            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts}/>}
                           </div>
 
                 )}
