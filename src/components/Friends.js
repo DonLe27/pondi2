@@ -14,7 +14,7 @@ class FriendPage extends React.Component{
 		
 		<div className="Friendpage">
 		<HeaderBar header="You have no friends..."/>
-        <h1>Stark, I don't feel so good</h1>
+		{this.props.friends[0]["username"]}
 		</div>
 		);
 	}

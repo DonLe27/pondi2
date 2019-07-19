@@ -106,6 +106,7 @@ class StreamHolder extends React.Component {
             ocean: false,
             prompt: false,
             prompts: [],
+            myprofile: [],
             leftSide: <SideBar 
                 userData={this.userData}
                 addStream={this.addStream.bind(this)} 
@@ -116,7 +117,10 @@ class StreamHolder extends React.Component {
             />,
             myposts: [],
             oceanPosts: [],
-            friendPosts: []
+            friendPosts: [],
+            friends: [],
+            closeFriends: [],
+            pendingFriends: [],
 
 
 
@@ -256,6 +260,28 @@ class StreamHolder extends React.Component {
                 }
             })
         }, 500);
+
+        //////Get Profile
+                setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+            .then(res => {
+                console.log('PROFILE_RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        console.log('MY PROFILE:', data);
+                        this.setState({
+                            myprofile: data
+                        })
+
+                    })
+
+                    
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
         /////////////////Get prompts
         setTimeout(() => {
             fetch('https://pondi.herokuapp.com/api/allprompts/',  {headers, method: "GET"})
@@ -278,8 +304,31 @@ class StreamHolder extends React.Component {
             })
         }, 500);
                 ///////Get post information
-        /////////////////Get prompts
+        /////////////////Get friends
+        setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
+            .then(res => {
+                console.log('PROFILE_RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        var allFriends = JSON.parse(data)
+                        console.log("FRIENDS", allFriends["friends"])
+                        console.log("CLOSE FRIENDS", allFriends["closefriends"])
+                        console.log("PENDING FRIENDS", allFriends["pendingfriends"])
+                        this.setState({
+                            friends: allFriends["friends"],
+                            closeFriends: allFriends["closefriends"],
+                            pendingFriends: allFriends["pendingfriends"]
+                        })
+                    })
 
+                    
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
         /////////////////Get ocean posts
         setTimeout(() => {
             fetch('https://pondi.herokuapp.com/api/auth/oceanposts/',  {headers, method: "GET"})
@@ -409,7 +458,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts}/>}
+            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts} friends={this.state.friends} closeFriends={this.state.closeFriends} pendingFriends={this.state.pendingFriends}/>}
                           </div>
 
                 )}
