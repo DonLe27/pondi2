@@ -4,7 +4,7 @@
 //for now put in random ID
 import React from "react";
 import { Link } from "react-router-dom";
-import { FormControl, InputGroup,Radio, Button , ButtonToolbar} from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 import "../styles/prompt.css";
 
 import { connect } from "react-redux";

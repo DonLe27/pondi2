@@ -1,32 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/promptdisplay.css';
+import '../styles/frienddisplay.css';
 import ProfPic from './ProfPic.js'
-
+import { Button } from "react-bootstrap";
 class FriendDisplay extends React.Component {
 
 	constructor(props)
 	{
 		super(props);
-		this.prompt_title = this.props.title;
-		this.prompt_contents = this.props.content;
-		this.prompt_date = this.props.date.slice(0,10);
-		this.avatar = this.props.avatar;
 		
 	}
 
 	render(){
 		return(
-			<div>
-			<ProfPic classType="avatar-prompt" avatar={this.avatar}/>
-			<div className="prompt">
-			<h1 className="prompt_title">{this.props.title}</h1>
-			<p className="prompt_contents">{this.prompt_contents}</p>
-			<p className="prompt_date">{this.prompt_date}</p>
-			<hr/>
+			<div className ="friend">
+			<Button className="prompt_title" onClick={(i) => {this.props.acceptFriend(this.props.username)}}>{this.props.username}</Button>
 			</div>
-			</div>
-
 		);
 	}
 }

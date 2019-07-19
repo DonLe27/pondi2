@@ -312,6 +312,7 @@ class StreamHolder extends React.Component {
                 if (res.status < 500) {
                     return res.json().then(data => {
                         var allFriends = JSON.parse(data)
+                        console.log(allFriends)
                         console.log("FRIENDS", allFriends["friends"])
                         console.log("CLOSE FRIENDS", allFriends["closefriends"])
                         console.log("PENDING FRIENDS", allFriends["pendingfriends"])
