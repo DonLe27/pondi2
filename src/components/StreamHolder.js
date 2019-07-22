@@ -154,7 +154,45 @@ class StreamHolder extends React.Component {
         this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false });
         
     }
+    getMyFriends(){
+        document.body.style.margin = "0";
+        //document.body.style.overflow = "hidden";
+        let token = this.props.token;
+        console.log("TOKEN:", token);
+        let headers = {
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+          //  'Access-Control-Allow-Origin': '*'
+        };
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+        setTimeout(() => {
+            fetch('https://pondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
+            .then(res => {
+                console.log('FRIEND_RESPONSE:', res);
+                if (res.status < 500) {
+                    return res.json().then(data => {
+                        var allFriends = JSON.parse(data)
+                        console.log(allFriends)
+                        console.log("FRIENDS", allFriends["friends"])
+                        console.log("CLOSE FRIENDS", allFriends["closefriends"])
+                        console.log("PENDING FRIENDS", allFriends["pendingfriends"])
+                        this.setState({
+                            friends: allFriends["friends"],
+                            closeFriends: allFriends["closefriends"],
+                            pendingFriends: allFriends["pendingfriends"]
+                        })
+                    })
 
+                    
+                } else {
+                    console.log("Server Error!");
+                    throw res;
+                }
+            })
+        }, 500);
+    }
     getMyPosts(){
         document.body.style.margin = "0";
         //document.body.style.overflow = "hidden";
@@ -189,7 +227,6 @@ class StreamHolder extends React.Component {
                         }
                     })
                 }, 500);
-
     }
 
     componentDidMount() {
@@ -459,7 +496,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts} friends={this.state.friends} closeFriends={this.state.closeFriends} pendingFriends={this.state.pendingFriends}/>}
+            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts} getMyFriends={this.getMyFriends.bind(this)} friends={this.state.friends} closeFriends={this.state.closeFriends} pendingFriends={this.state.pendingFriends}/>}
                           </div>
 
                 )}

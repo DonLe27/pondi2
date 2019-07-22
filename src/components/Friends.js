@@ -1,48 +1,100 @@
 import React from 'react';
 import HeaderBar from './HeaderBar.js'
 import FriendDisplay from './FriendDisplay'
-import { auth } from "../actions";
+import {auth}  from "../actions";
 import { connect } from "react-redux";
 class FriendPage extends React.Component{
 	constructor(props){
 		super(props);
-		this.friendDisplays = []
-		this.closeFriendDisplays = []
-		this.pendingFriendDisplays = []
+		var friendDisplays = [];
+		var closeFriendDisplays = [];
+		var pendingFriendDisplays = [];
 		for(var i = 0; i < props.friends.length; i++)
 		{
-			this.friendDisplays.push(
-				<FriendDisplay key={i} username={this.props.friends[i]["username"]} avatar={this.props.friends[i]["avatar"]}/>
+			friendDisplays.push(
+				<FriendDisplay key={this.props.pendingFriends[i]["username"] + ' f'} username={this.props.friends[i]["username"]} avatar={this.props.friends[i]["avatar"]}/>
 			)
 		}
 		for(var i = 0; i < props.closeFriends.length; i++)
 		{
-			this.closeFriendDisplays.push(
-				<FriendDisplay key={i} username={this.props.closeFriends[i]["username"]} avatar={this.props.closeFriends[i]["avatar"]}/>
+			closeFriendDisplays.push(
+				<FriendDisplay key={this.props.closeFriends[i]["username"] + ' c'} username={this.props.closeFriends[i]["username"]} avatar={this.props.closeFriends[i]["avatar"]}/>
 			)
 		}
 		for(var i = 0; i < props.pendingFriends.length; i++)
 		{
-			this.pendingFriendDisplays.push(
-				<FriendDisplay key={i} acceptFriend={this.props.acceptFriend.bind(this)} username={this.props.pendingFriends[i]["username"]} avatar={this.props.pendingFriends[i]["avatar"]}/>
+			pendingFriendDisplays.push(
+				<FriendDisplay key={this.props.pendingFriends[i]["username"] + ' p'} acceptFriend={this.acceptFriendHandler.bind(this)} username={this.props.pendingFriends[i]["username"]} avatar={this.props.pendingFriends[i]["avatar"]}/>
 			)
 		}
+		this.state = {
+			friendDisplays : friendDisplays,
+			closeFriendDisplays : closeFriendDisplays,
+			pendingFriendDisplays : pendingFriendDisplays
+		}
 		console.log("Rendering friends")
-		console.log(this.friendDisplays)
 	}
-	acceptFriend = (friendName) => {
-		this.props.acceptFriend(friendName)
-	  };
+	acceptFriendHandler = (friendname) => {
+		this.props.acceptFriend(friendname)
+		this.props.getMyFriends();
+	}
+	componentWillReceiveProps(newProps)
+	{
+		if (newProps.friends != this.props.friends){
+			var newFriendDisplays = []
+			for(var i = 0; i < newProps.friends.length; i++)
+			{
+				newFriendDisplays.push(
+					<FriendDisplay key={newProps.friends[i]["username"] + ' f'} username={newProps.friends[i]["username"]} avatar={newProps.friends[i]["avatar"]}/>
+				)
+			}
+			this.setState({
+				friendDisplays: newFriendDisplays
+			})
+			console.log("RECEIVED NEW FRIENDS" )
+			console.log(newProps.friends)
+		}
+		if (newProps.pendingFriends != this.props.pendingFriends){
+			var newPendingFriendDisplays = []
+			for(var i = 0; i < newProps.pendingFriends.length; i++)
+			{
+				newPendingFriendDisplays.push(
+					<FriendDisplay key={newProps.pendingFriends[i]["username"] + ' p'} username={newProps.pendingFriends[i]["username"]} avatar={newProps.pendingFriends[i]["avatar"]}/>
+				)
+			}
+			this.setState({
+				pendingFriendDisplays: newPendingFriendDisplays
+			})
+			console.log("RECEIVED NEW PENDING FRIENDS")
+			console.log(newProps.pendingFriends)
+		}	
+		if (newProps.closeFriends != this.props.closeFriends){
+			var newCloseFriendDisplays = []
+			for(var i = 0; i < newProps.closeFriends.length; i++)
+			{
+				newCloseFriendDisplays.push(
+					<FriendDisplay key={newProps.closeFriends[i]["username"] + ' c'} username={newProps.closeFriends[i]["username"]} avatar={newProps.closeFriends[i]["avatar"]}/>
+				)
+			}
+			this.setState({
+				closeFriendDisplays: newCloseFriendDisplays
+			})
+			console.log("RECEIVED NEW CLOSE FRIENDS")
+			console.log(newProps.closeFriends)
+		}	
+		
+	}
+	
 	render() {
 		return (
 		
 		<div >
 			<h1 align="center" >friends</h1>
-		{this.friendDisplays}
+		{this.state.friendDisplays}
 		<h1 align="center" >close friends</h1>
-		{this.closeFriendDisplays}
+		{this.state.closeFriendDisplays}
 		<h1 align="center" >pending friends</h1>
-		{this.pendingFriendDisplays}
+		{this.state.pendingFriendDisplays}
 
 		</div>
 		);
