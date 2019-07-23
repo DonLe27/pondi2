@@ -12,7 +12,7 @@ class FriendPage extends React.Component{
 		for(var i = 0; i < props.friends.length; i++)
 		{
 			friendDisplays.push(
-				<FriendDisplay key={this.props.pendingFriends[i]["username"] + ' f'} username={this.props.friends[i]["username"]} avatar={this.props.friends[i]["avatar"]}/>
+				<FriendDisplay key={this.props.friends[i]["username"] + ' f'} username={this.props.friends[i]["username"]} avatar={this.props.friends[i]["avatar"]}/>
 			)
 		}
 		for(var i = 0; i < props.closeFriends.length; i++)
@@ -45,7 +45,7 @@ class FriendPage extends React.Component{
 			for(var i = 0; i < newProps.friends.length; i++)
 			{
 				newFriendDisplays.push(
-					<FriendDisplay key={newProps.friends[i]["username"] + ' f'} username={newProps.friends[i]["username"]} avatar={newProps.friends[i]["avatar"]}/>
+					<FriendDisplay key={newProps.friends[i]["username"] + ' c'} username={newProps.friends[i]["username"]} avatar={newProps.friends[i]["avatar"]}/>
 				)
 			}
 			this.setState({
@@ -59,7 +59,7 @@ class FriendPage extends React.Component{
 			for(var i = 0; i < newProps.pendingFriends.length; i++)
 			{
 				newPendingFriendDisplays.push(
-					<FriendDisplay key={newProps.pendingFriends[i]["username"] + ' p'} username={newProps.pendingFriends[i]["username"]} avatar={newProps.pendingFriends[i]["avatar"]}/>
+					<FriendDisplay key={newProps.pendingFriends[i]["username"] + ' c'} acceptFriend={this.acceptFriendHandler.bind(this)} username={newProps.pendingFriends[i]["username"]} avatar={newProps.pendingFriends[i]["avatar"]}/>
 				)
 			}
 			this.setState({
