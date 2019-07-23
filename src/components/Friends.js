@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderBar from './HeaderBar.js'
 import FriendDisplay from './FriendDisplay'
+import PendingFriendDisplay from './PendingFriendDisplay'
 import {auth}  from "../actions";
 import { connect } from "react-redux";
 class FriendPage extends React.Component{
@@ -24,7 +25,7 @@ class FriendPage extends React.Component{
 		for(var i = 0; i < props.pendingFriends.length; i++)
 		{
 			pendingFriendDisplays.push(
-				<FriendDisplay key={this.props.pendingFriends[i]["username"] + ' p'} acceptFriend={this.acceptFriendHandler.bind(this)} username={this.props.pendingFriends[i]["username"]} avatar={this.props.pendingFriends[i]["avatar"]}/>
+				<PendingFriendDisplay key={this.props.pendingFriends[i]["username"] + ' p'} acceptFriend={this.acceptFriendHandler.bind(this)} username={this.props.pendingFriends[i]["username"]} avatar={this.props.pendingFriends[i]["avatar"]}/>
 			)
 		}
 		this.state = {
@@ -59,7 +60,7 @@ class FriendPage extends React.Component{
 			for(var i = 0; i < newProps.pendingFriends.length; i++)
 			{
 				newPendingFriendDisplays.push(
-					<FriendDisplay key={newProps.pendingFriends[i]["username"] + ' c'} acceptFriend={this.acceptFriendHandler.bind(this)} username={newProps.pendingFriends[i]["username"]} avatar={newProps.pendingFriends[i]["avatar"]}/>
+					<PendingFriendDisplay key={newProps.pendingFriends[i]["username"] + ' c'} acceptFriend={this.acceptFriendHandler.bind(this)} username={newProps.pendingFriends[i]["username"]} avatar={newProps.pendingFriends[i]["avatar"]}/>
 				)
 			}
 			this.setState({
