@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderBar from './HeaderBar.js'
 import FriendDisplay from './FriendDisplay'
+import SearchUser from './SearchUser'
 import PendingFriendDisplay from './PendingFriendDisplay'
 import {auth}  from "../actions";
 import { connect } from "react-redux";
@@ -38,6 +39,9 @@ class FriendPage extends React.Component{
 	acceptFriendHandler = (friendname) => {
 		this.props.acceptFriend(friendname)
 		this.props.getMyFriends();
+	}
+	searchUserHandler = (friendname) => {
+		console.log(this.props.searchUser(friendname))
 	}
 	componentWillReceiveProps(newProps)
 	{
@@ -90,6 +94,7 @@ class FriendPage extends React.Component{
 		return (
 		
 		<div >
+			<SearchUser searchUser={this.searchUserHandler.bind(this)}/>
 			<h1 align="center" >friends</h1>
 		{this.state.friendDisplays}
 		<h1 align="center" >close friends</h1>
@@ -119,8 +124,11 @@ const mapDispatchToProps = dispatch => {
     return {
         loadUser: () => dispatch(auth.loadUser()),
         acceptFriend: (friendName) => 
-            dispatch(auth.acceptFriend(friendName)),
-    };
+			dispatch(auth.acceptFriend(friendName)),
+		searchUser: (friendName) => 
+            dispatch(auth.searchUser(friendName)),
+	};
+	
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendPage);

@@ -1,0 +1,20 @@
+/*--------------------------------------*\
+	    SearchUser : medium size;
+\*--------------------------------------*/
+
+.searchuser {
+    width: 2vh;
+    height: 2vh;
+    padding-left: 50%;
+    padding-bottom: 5%;
+}
+
+.searchbutton {
+    height: 1vw;
+}
+
+.textarea {
+    width: 40vh;
+    height: 8vh;
+    padding: 3px;
+}
