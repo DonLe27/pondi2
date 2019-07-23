@@ -302,9 +302,42 @@ export const searchUser = (friendName) => {
          headers["Authorization"] = `Token ${token}`;
        }
        console.log("Header: " + headers.Authorization)
-       return fetch(BASE_URL + "/api/auth/searchfriend/", {headers : headers, body : JSON.stringify(postBody), method: "GET"})
+       return fetch(BASE_URL + "/api/auth/searchfriend/?friendname=" + friendName, {headers : headers, method: "GET"})
          .then(res => {
            console.log('Search User Response:', res);
+           if (res.status < 500) {
+             return res.json().then(data => {
+               console.log(data)
+               console.log(res.status)
+               return {status: res.status, data};
+             })
+           } else {
+             console.log("User not found")
+             return {status: res.status}
+           }
+         })  
+     }
+}
+
+/////FRIENDS UPDATING
+export const sendRequest = (friendName) => {
+  return (dispatch, getState) => {
+       let postBody = {
+         "friendname": friendName
+       }
+       console.log("Body: " + JSON.stringify(postBody));
+       const token = getState().auth.token;
+       let headers = {
+         "Content-Type": "application/json",
+         'Accept': 'application/json',
+       };
+       if (true) {
+         headers["Authorization"] = `Token ${token}`;
+       }
+       console.log("Header: " + headers.Authorization)
+       return fetch(BASE_URL + "/api/auth/sendrequest/", {headers : headers, body : JSON.stringify(postBody), method: "POST"})
+         .then(res => {
+           console.log('Request Response:', res);
            if (res.status < 500) {
              return res.json().then(data => {
                return {status: res.status, data};

@@ -3,6 +3,7 @@ import HeaderBar from './HeaderBar.js'
 import FriendDisplay from './FriendDisplay'
 import SearchUser from './SearchUser'
 import PendingFriendDisplay from './PendingFriendDisplay'
+import SearchedFriendDisplay from './SearchedFriendDisplay'
 import {auth}  from "../actions";
 import { connect } from "react-redux";
 class FriendPage extends React.Component{
@@ -32,7 +33,8 @@ class FriendPage extends React.Component{
 		this.state = {
 			friendDisplays : friendDisplays,
 			closeFriendDisplays : closeFriendDisplays,
-			pendingFriendDisplays : pendingFriendDisplays
+			pendingFriendDisplays : pendingFriendDisplays,
+			searchedFriend : null
 		}
 		console.log("Rendering friends")
 	}
@@ -40,8 +42,23 @@ class FriendPage extends React.Component{
 		this.props.acceptFriend(friendname)
 		this.props.getMyFriends();
 	}
+	requestFriendHandler = (friendname) => {
+		this.props.sendRequest(friendname)
+	}
 	searchUserHandler = (friendname) => {
-		console.log(this.props.searchUser(friendname))
+		this.props.searchUser(friendname).then((result) => {
+			if (result["status"] < 500){
+				console.log(result["data"]["friendObject"]["username"])
+				this.setState({
+					searchedFriend : result["data"]["friendObject"]["username"]
+				})
+			}
+			else{
+				this.setState({
+					searchedFriend : null
+				})
+			}
+		})
 	}
 	componentWillReceiveProps(newProps)
 	{
@@ -95,6 +112,7 @@ class FriendPage extends React.Component{
 		
 		<div >
 			<SearchUser searchUser={this.searchUserHandler.bind(this)}/>
+		{ this.state.searchedFriend && <SearchedFriendDisplay key={this.state.searchedFriend + "s"} requestFriend={this.requestFriendHandler.bind(this)} username={this.state.searchedFriend} /> }
 			<h1 align="center" >friends</h1>
 		{this.state.friendDisplays}
 		<h1 align="center" >close friends</h1>
@@ -126,7 +144,9 @@ const mapDispatchToProps = dispatch => {
         acceptFriend: (friendName) => 
 			dispatch(auth.acceptFriend(friendName)),
 		searchUser: (friendName) => 
-            dispatch(auth.searchUser(friendName)),
+			dispatch(auth.searchUser(friendName)),
+		sendRequest: (friendName) => 
+			dispatch(auth.sendRequest(friendName)),
 	};
 	
 }
