@@ -14,84 +14,14 @@ import Ocean from './Ocean.js';
 import Archive from './Archive.js';
 import SideBar from './SideBar.js';
 import Prompt from './Prompt.js';
-import FriendPage from './Friends.js'
+import FriendPage from './Friends.js';
+import FriendProfile from './FriendProfile';
 
 class StreamHolder extends React.Component {
     constructor(props) {
         super(props);
         // parse through data, get username, etc
-        this.userData = {
-            "username": "gudetama",
-            "avatar": "stingray",
-            "prompts": [{
-                    "title": "This is the first title, from archive",
-                    "content": "this is some content. This is some more content. This is more content",
-                    "date": "Feb 1, 2019",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the second title, from archive",
-                    "content": "this is some more content. Lorem ipsum something dolor blah",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-            ]
-        };
-        this.streamData = {
-            "prompts": [{
-                    "title": "This is the first title for stream",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 2nd title for stream",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 3rd title for stream",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 4th title for stream",
-                    "content": "this is some more content. Lorem ipsum something dolor blah",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-            ]
-        };
-
-        this.oceanData = {
-            "prompts": [{
-                    "title": "This is the first title for ocean",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 2nd title for ocean",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 3rd title for ocean",
-                    "content": "this is some content. This is some more contnet. This is more content",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-                {
-                    "title": "This is the 4th title for ocean",
-                    "content": "this is some more content. Lorem ipsum something dolor blah",
-                    "date": "Jan 1, 1111",
-                    "avatar": "stingray"
-                },
-            ]
-        };
+        
 
         this.state = {
             username: '',
@@ -105,6 +35,7 @@ class StreamHolder extends React.Component {
             friend:false,
             ocean: false,
             prompt: false,
+            friendProfile: false,
             prompts: [],
             myprofile: [],
             leftSide: <SideBar 
@@ -153,6 +84,10 @@ class StreamHolder extends React.Component {
     addPrompt(i) {
         this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false });
         
+    }
+    addFriendProfile(friendname) {
+        this.setState({ archive: false, stream: false, ocean: false, prompt: false,friend: false, friendProfile: true });
+        console.log("PROFILE " + friendname)
     }
     getMyFriends(){
         document.body.style.margin = "0";
@@ -496,10 +431,22 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} friendPosts={this.state.friendPosts} getMyFriends={this.getMyFriends.bind(this)} friends={this.state.friends} closeFriends={this.state.closeFriends} pendingFriends={this.state.pendingFriends}/>}
+            {this.state.friend && <FriendPage key={5} prompts={this.state.prompts} getFriendProfile={this.addFriendProfile.bind(this)} friendPosts={this.state.friendPosts} getMyFriends={this.getMyFriends.bind(this)} friends={this.state.friends} closeFriends={this.state.closeFriends} pendingFriends={this.state.pendingFriends}/>}
                           </div>
 
                 )}
+      
+        </Motion>
+                 <Motion 
+            defaultStyle={{opacity: 0}}
+            style={{opacity: spring(this.state.friendProfile ? 1 : 0, {stiffness: 50, damping: 20})}}
+        >
+            {(style) => (
+                <div  style={{opacity: style.opacity}}>
+            {this.state.friendProfile &&  <FriendProfile key={6} prompts={this.state.prompts} myposts={this.state.myposts} avatar={this.state.avatar} />}          
+                             </div>
+
+               )}
         </Motion>
 
          

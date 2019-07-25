@@ -14,7 +14,7 @@ class SearchedFriendDisplay extends React.Component {
 	render(){
 		return(
 			<div className ="friend">
-				<Button className="prompt_title" onClick={(i) => {this.props.requestFriend(this.props.username)}}>{this.props.username}</Button>
+				<Button className="prompt_title" onClick={(i) => {this.props.getFriendProfile(this.props.username)}}>{this.props.username}</Button>
 			</div>
 		);
 	}

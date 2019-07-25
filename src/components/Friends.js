@@ -148,7 +148,7 @@ class FriendPage extends React.Component{
 		
 		<div >
 			<SearchUser searchUser={this.searchUserHandler.bind(this)}/>
-		{  this.state.searchedFriend && <SearchedFriendDisplay key={this.state.searchedFriend + "s"} requestFriend={this.requestFriendHandler.bind(this)} username={this.state.searchedFriend} /> }
+		{  this.state.searchedFriend && <SearchedFriendDisplay key={this.state.searchedFriend + "s"} getFriendProfile={this.props.getFriendProfile} requestFriend={this.requestFriendHandler.bind(this)} username={this.state.searchedFriend} /> }
 			<h1 align="center" >friends</h1>
 		{this.state.friendDisplays}
 		<h1 align="center" >close friends</h1>
