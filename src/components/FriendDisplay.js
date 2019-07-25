@@ -14,7 +14,7 @@ class FriendDisplay extends React.Component {
 	render(){
 		return(
 			<div className ="friend">
-			<h6 className="prompt_title">{this.props.username}</h6>
+			<Button className="prompt_title" onClick={(i) => {this.props.deleteFriend(this.props.username)}}>{this.props.username}</Button>
 			</div>
 		);
 	}

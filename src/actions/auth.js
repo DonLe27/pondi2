@@ -287,6 +287,35 @@ export const acceptFriend = (friendName) => {
      }
 }
 
+export const deleteFriend = (friendName) => {
+  return (dispatch, getState) => {
+       let postBody = {
+         "friendname": friendName
+       }
+       console.log("Body: " + JSON.stringify(postBody));
+       const token = getState().auth.token;
+       let headers = {
+         "Content-Type": "application/json",
+         'Accept': 'application/json',
+       };
+       if (true) {
+         headers["Authorization"] = `Token ${token}`;
+       }
+       console.log("Header: " + headers.Authorization)
+       return fetch(BASE_URL + "/api/auth/deletefriend/", {headers : headers, body : JSON.stringify(postBody), method: "PATCH"})
+         .then(res => {
+           console.log('Delete Friend Response:', res);
+           if (res.status < 500) {
+             return res.json().then(data => {
+               return {status: res.status, data};
+             })
+           } else {
+             console.log("Server Error!");
+           }
+         })  
+     }
+}
+
 export const searchUser = (friendName) => {
   return (dispatch, getState) => {
        let postBody = {
