@@ -37,6 +37,7 @@ class StreamHolder extends React.Component {
             ocean: false,
             prompt: false,
             friendProfile: false,
+            profileName: '',
             prompts: [],
             myprofile: [],
             leftSide: <SideBar 
@@ -66,28 +67,26 @@ class StreamHolder extends React.Component {
 
     handleAdd(i) {}
     addFriends(i) {
-        this.setState({ archive: false, stream: false, ocean: false, prompt: false, friend: true });
+        this.setState({ archive: false, stream: false, ocean: false, prompt: false, friend: true, friendProfile: false });
     }
     addStream(i) {
-        this.setState({ archive: false, stream: true, ocean: false, prompt: false, friend: false });
+        this.setState({ archive: false, stream: true, ocean: false, prompt: false, friend: false, friendProfile: false });
     }
 
     addOcean(i) {
-        this.setState({ archive: false, stream: false, ocean: true, prompt: false, friend: false});
-
+        this.setState({ archive: false, stream: false, ocean: true, prompt: false, friend: false, friendProfile: false});
     }
 
     addarchive(i) {
-        this.setState({ archive: true, stream: false, ocean: false, prompt: false,friend: false });
+        this.setState({ archive: true, stream: false, ocean: false, prompt: false,friend: false, friendProfile: false });
         console.log(this.addarchive)
     }
 
     addPrompt(i) {
-        this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false });
-        
+        this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false, friendProfile: false });  
     }
     addFriendProfile(friendName) {
-        this.setState({ archive: false, stream: false, ocean: false, prompt: false,friend: false, friendProfile: true });
+        this.setState({ archive: false, stream: false, ocean: false, prompt: false,friend: false, friendProfile: true, profileName : friendName});
         console.log("PROFILE " + friendName)
         document.body.style.margin = "0";
         //document.body.style.overflow = "hidden";
@@ -110,9 +109,9 @@ class StreamHolder extends React.Component {
                             return res.json().then(data => {
                                 console.log('Friend Profile Posts: ', data);
                                 this.setState({
-                                    friendProfilePosts: data
+                                    friendProfilePosts: data,
                                 })
-        
+                                console.log(this.state.profileName)
                             })
         
                             
@@ -477,7 +476,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.friendProfile &&  <FriendProfile key={6} prompts={this.state.prompts} friendProfilePosts={this.state.friendProfilePosts} avatar={this.state.avatar} />}          
+            {  this.state.friendProfile &&  <FriendProfile key={6} prompts={this.state.prompts} friendName={this.state.profileName} friendProfilePosts={this.state.friendProfilePosts} avatar={this.state.avatar} />}          
                              </div>
 
                )}

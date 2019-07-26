@@ -179,13 +179,16 @@ export const updateAvatarColor = (first_name, last_name, animal, color) => {
 export const post = (prompt, body, profile, theme, privacy) => {
   return (dispatch, getState) => {
  // let postBody = JSON.parse(JSON.stringify({prompt, body, profile, theme, privacy}));
-
-
+    let postTheme = theme;
+    if (theme == null || theme.length == 0)
+    {
+      postTheme = "DefaultTheme"
+    }
     let postBody = {
       "prompt": prompt,
       "body": body,
       "profile": profile,
-      "theme": "Love",
+      "theme": postTheme,
       "privacy": privacy,
     }
     console.log("PostBody: " + JSON.stringify(postBody));

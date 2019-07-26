@@ -6,12 +6,23 @@ import '../styles/friends.css';
 class HeaderBar extends React.Component{
 	constructor(props)
 	{
+		console.log(props.header)
 		super(props);
 		this.header = props.header
 		this.state = {
 			categories : [ this.header],
 		}
 		
+	}
+	componentWillReceiveProps(newProps)
+	{
+		if (newProps.header != this.props.header)
+		{
+			console.log(newProps.header)
+			this.setState({
+				categories : newProps.header
+			})
+		}
 	}
 
 	render(){

@@ -10,7 +10,10 @@ class FriendProfile extends React.Component{
 	constructor(props){
 		super(props);
 		// parse data from parent to get prompts
+		this.state = {
+			friendName: "",
 
+		}
 		this.avatar=this.props.avatar;
 		this.prompts = [];
 		this.allprompts = this.props.prompts
@@ -29,6 +32,7 @@ class FriendProfile extends React.Component{
 					);
 		}
 		console.log("Rendering friend profile")
+		console.log(this.props.friendName)
 	}
 	componentWillReceiveProps(newProps)
 	{
@@ -53,7 +57,7 @@ class FriendProfile extends React.Component{
 							<PromptDisplay key={i} title={question} content={p["body"]} date={p["timestamp"]} avatar={this.avatar}/>
 							);
 			}
-			console.log("Rendering archive again")
+			console.log("Rendering friend profile again")
 		}
 	}
 
@@ -63,8 +67,7 @@ class FriendProfile extends React.Component{
 		return (
 		
 		<div className="Archive">
-		<HeaderBar header="Friend Profile"/>
-		<Categories />
+		<HeaderBar header={this.props.friendName}/>
 		{this.prompts}
 		</div>
 		);
