@@ -185,10 +185,10 @@ export const post = (prompt, body, profile, theme, privacy) => {
       "prompt": prompt,
       "body": body,
       "profile": profile,
-      "theme": theme,
+      "theme": "Love",
       "privacy": privacy,
     }
-    console.log("Body: " + JSON.stringify(postBody));
+    console.log("PostBody: " + JSON.stringify(postBody));
     const token = getState().auth.token;
     let headers = {
       "Content-Type": "application/json",
@@ -252,7 +252,8 @@ export const logout = () => {
     if (token) {
       headers["Authorization"] = `Token ${token}`;
     }
-
+    localStorage.clear();
+    sessionStorage.clear();
     dispatch({type: 'LOGOUT_SUCCESSFUL'});
   }
 }

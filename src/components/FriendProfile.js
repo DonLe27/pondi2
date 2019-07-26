@@ -15,12 +15,12 @@ class FriendProfile extends React.Component{
 		this.prompts = [];
 		this.allprompts = this.props.prompts
 
-		for (var i = 0; i < this.props.myposts.length; i++){
-			var p = this.props.myposts[i];
+		for (var i = 0; i < this.props.friendProfilePosts.length; i++){
+			var p = this.props.friendProfilePosts[i];
 			var question;
 			for (var j = 0; j < this.props.prompts.length; j++){
 
-				if(this.allprompts[j].id == this.props.myposts[i].prompt){
+				if(this.allprompts[j].id == this.props.friendProfilePosts[i].prompt){
 					question = this.props.prompts[j].question
 				}
 			}
@@ -32,18 +32,18 @@ class FriendProfile extends React.Component{
 	}
 	componentWillReceiveProps(newProps)
 	{
-			if (newProps.myposts != this.props.myposts || newProps.prompts != this.props.prompts)
+			if (newProps.friendProfilePosts != this.props.friendProfilePosts || newProps.prompts != this.props.prompts)
 			{
 				this.avatar=newProps.avatar;
 				this.prompts = [];
 				this.allprompts = newProps.prompts
 
-				for (var i = 0; i < newProps.myposts.length; i++){
-					var p = newProps.myposts[i];
+				for (var i = 0; i < newProps.friendProfilePosts.length; i++){
+					var p = newProps.friendProfilePosts[i];
 					var question;
 					for (var j = 0; j < newProps.prompts.length; j++){
 
-						if(this.allprompts[j].id == newProps.myposts[i].prompt){
+						if(this.allprompts[j].id == newProps.friendProfilePosts[i].prompt){
 							question = newProps.prompts[j].question
 							break;
 						}

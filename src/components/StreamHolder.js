@@ -30,6 +30,7 @@ class StreamHolder extends React.Component {
             id: -1,
             archivePosts: [],
             streamPosts: [],
+            friendProfilePosts: [],
             stream: false,
             archive: true,
             friend:false,
@@ -85,9 +86,42 @@ class StreamHolder extends React.Component {
         this.setState({ archive: false, stream: false, ocean: false, prompt: true,friend: false });
         
     }
-    addFriendProfile(friendname) {
+    addFriendProfile(friendName) {
         this.setState({ archive: false, stream: false, ocean: false, prompt: false,friend: false, friendProfile: true });
-        console.log("PROFILE " + friendname)
+        console.log("PROFILE " + friendName)
+        document.body.style.margin = "0";
+        //document.body.style.overflow = "hidden";
+        let token = this.props.token;
+        console.log("TOKEN:", token);
+        let headers = {
+            "Content-Type": "application/json",
+            'Accept': 'application/json',
+          //  'Access-Control-Allow-Origin': '*'
+        };
+        if (token) {
+            headers["Authorization"] = `Token ${token}`;
+        }
+                ///////Get post information
+                setTimeout(() => {
+                    fetch("https://pondi.herokuapp.com/api/auth/friendprofile/?friendname=" + friendName,  {headers, method: "GET"})
+                    .then(res => {
+                        console.log('PROFILE_RESPONSE:', res);
+                        if (res.status < 500) {
+                            return res.json().then(data => {
+                                console.log('Friend Profile Posts: ', data);
+                                this.setState({
+                                    friendProfilePosts: data
+                                })
+        
+                            })
+        
+                            
+                        } else {
+                            console.log("Server Error!");
+                            throw res;
+                        }
+                    })
+                }, 500);
     }
     getMyFriends(){
         document.body.style.margin = "0";
@@ -443,7 +477,7 @@ class StreamHolder extends React.Component {
         >
             {(style) => (
                 <div  style={{opacity: style.opacity}}>
-            {this.state.friendProfile &&  <FriendProfile key={6} prompts={this.state.prompts} myposts={this.state.myposts} avatar={this.state.avatar} />}          
+            {this.state.friendProfile &&  <FriendProfile key={6} prompts={this.state.prompts} friendProfilePosts={this.state.friendProfilePosts} avatar={this.state.avatar} />}          
                              </div>
 
                )}
