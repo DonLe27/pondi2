@@ -1,4 +1,4 @@
-const BASE_URL = 'https://pondi.herokuapp.com';
+const BASE_URL = 'https://backpondi.herokuapp.com';
 
 
 export const loadUser = () => {

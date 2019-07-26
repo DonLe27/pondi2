@@ -102,7 +102,7 @@ class StreamHolder extends React.Component {
         }
                 ///////Get post information
                 setTimeout(() => {
-                    fetch("https://pondi.herokuapp.com/api/auth/friendprofile/?friendname=" + friendName,  {headers, method: "GET"})
+                    fetch("https://backpondi.herokuapp.com/api/auth/friendprofile/?friendname=" + friendName,  {headers, method: "GET"})
                     .then(res => {
                         console.log('PROFILE_RESPONSE:', res);
                         if (res.status < 500) {
@@ -136,7 +136,7 @@ class StreamHolder extends React.Component {
             headers["Authorization"] = `Token ${token}`;
         }
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
             .then(res => {
                 console.log('FRIEND_RESPONSE:', res);
                 if (res.status < 500) {
@@ -176,7 +176,7 @@ class StreamHolder extends React.Component {
         }
                 ///////Get post information
                 setTimeout(() => {
-                    fetch('https://pondi.herokuapp.com/api/auth/myposts/',  {headers, method: "GET"})
+                    fetch('https://backpondi.herokuapp.com/api/auth/myposts/',  {headers, method: "GET"})
                     .then(res => {
                         console.log('PROFILE_RESPONSE:', res);
                         if (res.status < 500) {
@@ -211,7 +211,7 @@ class StreamHolder extends React.Component {
             headers["Authorization"] = `Token ${token}`;
         }
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
             .then(res => {
              //   console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
@@ -246,7 +246,7 @@ class StreamHolder extends React.Component {
 
         ///////Get post information
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/myposts/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/myposts/',  {headers, method: "GET"})
             .then(res => {
                 console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
@@ -268,7 +268,7 @@ class StreamHolder extends React.Component {
 
         //////Get Profile
                 setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
             .then(res => {
                 console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
@@ -289,7 +289,7 @@ class StreamHolder extends React.Component {
         }, 500);
         /////////////////Get prompts
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/allprompts/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/allprompts/',  {headers, method: "GET"})
             .then(res => {
                 console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
@@ -311,7 +311,7 @@ class StreamHolder extends React.Component {
                 ///////Get post information
         /////////////////Get friends
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/allfriends',  {headers, method: "GET"})
             .then(res => {
                 console.log('PROFILE_RESPONSE:', res);
                 if (res.status < 500) {
@@ -337,7 +337,7 @@ class StreamHolder extends React.Component {
         }, 500);
         /////////////////Get ocean posts
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/oceanposts/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/oceanposts/',  {headers, method: "GET"})
             .then(res => {
               
                 if (res.status < 500) {
@@ -359,7 +359,7 @@ class StreamHolder extends React.Component {
         
         /////////////////Get friend posts
         setTimeout(() => {
-            fetch('https://pondi.herokuapp.com/api/auth/friendposts/',  {headers, method: "GET"})
+            fetch('https://backpondi.herokuapp.com/api/auth/friendposts/',  {headers, method: "GET"})
             .then(res => {
             //    console.log('FRIEND RESPONSE:', res);
                 if (res.status < 500) {
@@ -378,7 +378,7 @@ class StreamHolder extends React.Component {
                 }
             })
         }, 500);
-        //fetch('https://pondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
+        //fetch('https://backpondi.herokuapp.com/api/auth/profile/',  {headers, method: "GET"})
 
     }
 
