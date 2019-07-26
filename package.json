@@ -26,6 +26,7 @@
     "redux-persist": "^5.10.0",
     "redux-persist-transform-filter": "0.0.18",
     "redux-thunk": "^2.3.0",
+    "serve": "^11.1.0",
     "styled-components": "^4.1.3"
   },
   "scripts": {
