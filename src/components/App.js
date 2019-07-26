@@ -16,7 +16,7 @@ import StreamHolder from "./StreamHolder";
 import Dashboard from "./Dashboard";
 import NotFound from "./NotFound";
 
-const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+//const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const composedEnhancers = compose(applyMiddleware(thunk),devToolsExtension);
 
 /* eslint-disable no-underscore-dangle */
